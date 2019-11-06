@@ -14,6 +14,10 @@ public class Operaciones {
 		if (tipo == 1) {
 
 			System.out.println("FUERA DE RANGO");
+		} else if (tipo == 2) {
+			System.out.println("REGISTRO NO ENCONTRADO");
+		} else if (tipo == 3) {
+			System.out.println("REGISTROS VACIOS");
 		}
 
 	}

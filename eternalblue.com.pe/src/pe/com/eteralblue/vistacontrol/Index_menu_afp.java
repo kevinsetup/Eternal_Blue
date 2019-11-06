@@ -1,6 +1,7 @@
 package pe.com.eteralblue.vistacontrol;
 
 import utils.GlobalVars;
+import utils.Operaciones;
 
 public class Index_menu_afp {
 	public static void menu_afp() {
@@ -20,22 +21,23 @@ public class Index_menu_afp {
 			opcion = GlobalVars.leer.entero();
 			switch (opcion) {
 			case 1:
-
+				Procesos_afp.registrar_afp();
 				break;
 			case 2:
-
+				Procesos_afp.editar_afp();
 				break;
 			case 3:
-
+				Procesos_afp.listar_afp();
 				break;
 			case 4:
-
+				Procesos_afp.eliminar_afp();
 				break;
 			case 5:
-
+				Procesos_afp.eliminar_afp();
 				break;
 
 			default:
+				Operaciones.error(1);
 				break;
 			}
 
