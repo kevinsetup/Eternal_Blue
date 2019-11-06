@@ -2,6 +2,7 @@ package pe.com.eteralblue.vistacontrol;
 
 import pe.com.eteralblue.modelo.Area;
 import utils.GlobalVars;
+import utils.Operaciones;
 
 public class Procesos_area {
 public static int buscar_area(String nombre) {
@@ -92,5 +93,5 @@ public static int buscar_area(String nombre) {
 			}
 		}
 	}
-
+	
 }
