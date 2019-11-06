@@ -8,9 +8,9 @@ import utils.Operaciones;
 public class Index_menu_principal {
 
 	public static void menu() {
-		System.out.println("-*-*-*-*-* MEN⁄ PRINCIPAL -*-*-*-*-*-");
+		System.out.println("-*-*-*-*-* MEN√ö PRINCIPAL -*-*-*-*-*-");
 		System.out.println("----- 1.- DATOS TRABAJADOR ----------");
-		System.out.println("----- 2.- DATOS ¡REA       ----------");
+		System.out.println("----- 2.- DATOS √ÅREA       ----------");
 		System.out.println("----- 3.- DATOS AFP        ----------");
 		System.out.println("----- 4.- GENERAR PLANILLA ----------");
 		System.out.println("----- 5.- VER PLANILLA     ----------");
@@ -79,10 +79,9 @@ public class Index_menu_principal {
 
 				break;
 			case 7:
-				Operaciones.salto_lineas(3);
-				Procesos_menu_salir.salir();
+				Operaciones.salto_lineas(1);
+				Procesos_menu_salir.main(null);
 				Operaciones.salto_lineas(2);
-				break;
 
 			default:
 				Operaciones.error(1);
