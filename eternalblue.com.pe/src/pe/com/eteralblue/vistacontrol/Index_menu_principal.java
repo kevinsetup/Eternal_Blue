@@ -81,6 +81,7 @@ public class Index_menu_principal {
 			case 7:
 				Operaciones.salto_lineas(1);
 				Procesos_menu_salir.main(null);
+				System.exit(0);
 				Operaciones.salto_lineas(2);
 
 			default:
