@@ -77,20 +77,38 @@ public static int buscar_area(String nombre) {
 	}
 	
 	public static void eliminar_area() {
+		String  respuesta = "N", respuesta2 = "";
+		int posicion;
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
-		}else {
-			int posicion;
-			System.out.println("***** ELIMINAR AREA *****");
-			listar_area();
-			System.out.println("NOMBRE: ");
-			posicion = buscar_area(GlobalVars.leer.cadena());
-			if (posicion == -1 ) {
-				Operaciones.error(2);
-			}else {
-				GlobalVars.areas.remove(posicion);
-				System.out.println("** AREA ELIMINADA CORRECTAMENTE **");
-			}
+		} else {
+			do {
+				
+				System.out.println("***** ELIMINAR AREA *****");
+				listar_area();
+				System.out.println("NOMBRE: ");
+				posicion = buscar_area(GlobalVars.leer.cadena());
+				if (posicion == -1) {
+					Operaciones.error(2);
+				} else {
+					do {
+						System.out.println("Estás seguro de eliminar a: " + GlobalVars.areas.get(posicion).getNombreArea() + "[S/N]");
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta2.equals("S")) {
+							GlobalVars.areas.remove(posicion);
+							System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+
+						}
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N") || GlobalVars.areas.isEmpty());
+					if (respuesta2.equals("N") ) {
+						Operaciones.error(6);
+						break;
+					}
+					do {
+
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+				}
+			} while (respuesta.equals("S"));
 		}
 	}
 	
