@@ -5,13 +5,13 @@ import utils.Operaciones;
 
 public class Index_menu_area {
 
-	// ESTO HAR¡ ELMER -> REGISTRAR, EDITAR, LISTAR, ELIMINAR , VOLVER
+	// ESTO HAR√Å ELMER -> REGISTRAR, EDITAR, LISTAR, ELIMINAR , VOLVER
 	public static void menu_area() {
-		System.out.println("-*-*-*-*-* MEN⁄ AREA -*-*-*-*-*-");
-		System.out.println("----- 1.- REGISTRAR ¡REA  ----------");
-		System.out.println("----- 2.- EDITAR    ¡REA  ----------");
-		System.out.println("----- 3.- LISTAR    ¡REA  ----------");
-		System.out.println("----- 4.- ELIMINAR  ¡REA  ----------");
+		System.out.println("-*-*-*-*-* MEN√ö AREA -*-*-*-*-*-");
+		System.out.println("----- 1.- REGISTRAR √ÅREA  ----------");
+		System.out.println("----- 2.- EDITAR    √ÅREA  ----------");
+		System.out.println("----- 3.- LISTAR    √ÅREA  ----------");
+		System.out.println("----- 4.- ELIMINAR  √ÅREA  ----------");
 		System.out.println("----- 5.- VOLVER          ----------");
 		System.out.println("ELIGA UNA OPCION [1-5]..");
 	}
@@ -28,17 +28,18 @@ public class Index_menu_area {
 				Procesos_area.registrar_area();
 				break;
 			case 2:
-				//Procesos_area.editar_area();
+				Procesos_area.editar_area();
 				break;
 			case 3:
-				//Procesos_area.listar_area();
+				Procesos_area.listar_area();
 				break;
 			case 4:
-				//Procesos_area.eliminar_area();
+				Procesos_area.eliminar_area();
 				break;
 			case 5:
 				Index_menu_principal.inicio();
 				break;
+
 			default:
 				Operaciones.error(1);
 				break;
