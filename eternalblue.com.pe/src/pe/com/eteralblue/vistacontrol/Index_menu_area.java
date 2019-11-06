@@ -4,8 +4,6 @@ import utils.GlobalVars;
 import utils.Operaciones;
 
 public class Index_menu_area {
-
-	// ESTO HARÁ ELMER -> REGISTRAR, EDITAR, LISTAR, ELIMINAR , VOLVER
 	public static void menu_area() {
 		System.out.println("-*-*-*-*-* MENÚ AREA -*-*-*-*-*-");
 		System.out.println("----- 1.- REGISTRAR ÁREA  ----------");
