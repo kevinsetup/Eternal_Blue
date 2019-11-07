@@ -132,7 +132,11 @@ public class Procesos_afp {
 
 						}
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
-					if (respuesta2.equals("N") || GlobalVars.afps.isEmpty()) {
+					if (respuesta2.equals("N")) {
+						System.out.println("REGISTRO ABORTADO");
+						break;
+					}
+					if (GlobalVars.afps.isEmpty()) {
 						System.out
 								.println("NO SE PUEDEN ELIMINAR MÁS REGISTROS, PORQUE TODOS ESTOS HAN SIDO ELIMINADOS");
 						break;
