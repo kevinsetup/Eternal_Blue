@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import pe.com.eteralblue.modelo.Afp;
 import pe.com.eteralblue.modelo.Area;
+import pe.com.eteralblue.modelo.Trabajador;
 
 public class GlobalVars {
 	public static Lectura leer = new Lectura();
