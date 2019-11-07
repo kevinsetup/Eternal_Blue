@@ -33,7 +33,7 @@ public class Index_menu_afp {
 				Procesos_afp.eliminar_afp();
 				break;
 			case 5:
-				Procesos_afp.eliminar_afp();
+				Index_menu_principal.inicio();
 				break;
 
 			default:

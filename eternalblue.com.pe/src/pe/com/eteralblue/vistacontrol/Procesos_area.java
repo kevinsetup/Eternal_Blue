@@ -5,7 +5,7 @@ import utils.GlobalVars;
 import utils.Operaciones;
 
 public class Procesos_area {
-public static int buscar_area(String nombre) {
+	public static int buscar_area(String nombre) {
 		int posicion = -1;
 		boolean encontrado = false;
 		do {
@@ -13,21 +13,21 @@ public static int buscar_area(String nombre) {
 			if (nombre.equals(GlobalVars.areas.get(posicion).getNombreArea())) {
 				encontrado = true;
 			}
-		} while (encontrado == false && posicion< GlobalVars.areas.size()-1);
-		
+		} while (encontrado == false && posicion < GlobalVars.areas.size() - 1);
+
 		if (encontrado == false) {
 			posicion = -1;
 		}
-		
+
 		return posicion;
 	}
-	
+
 	public static void registrar_area() {
 		String nombreA, respuesta = "N";
 		do {
 			System.out.println("----- REGISTRAR AREA----------");
 			System.out.print("NOMBRE: ");
-			nombreA = GlobalVars.leer.cadena();
+			nombreA = GlobalVars.leer.cadenaMayuscula();
 			GlobalVars.IdArea++;
 			Area area = new Area(GlobalVars.IdArea, nombreA);
 			GlobalVars.areas.add(area);
@@ -42,16 +42,16 @@ public static int buscar_area(String nombre) {
 	public static void editar_area() {
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
-		}else {
+		} else {
 			int posicion;
-			String respuesta="N";
+			String respuesta = "N";
 			System.out.println("----- EDITAR AREA ----------");
 			listar_area();
 			System.out.println("Nombre: ");
-			posicion = buscar_area(GlobalVars.leer.cadena());
+			posicion = buscar_area(GlobalVars.leer.cadenaMayuscula());
 			if (posicion == -1) {
 				Operaciones.error(2);
-			}else {
+			} else {
 				System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
 				System.out.println("¿Desea Modificar Area? [S/N] : ");
 				respuesta = GlobalVars.leer.cadenaMayuscula();
@@ -61,7 +61,7 @@ public static int buscar_area(String nombre) {
 					Operaciones.salto_lineas(2);
 				}
 			}
-			
+
 		}
 	}
 
@@ -75,15 +75,15 @@ public static int buscar_area(String nombre) {
 
 		}
 	}
-	
+
 	public static void eliminar_area() {
-		String  respuesta = "N", respuesta2 = "";
+		String respuesta = "N", respuesta2 = "";
 		int posicion;
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
 		} else {
 			do {
-				
+
 				System.out.println("***** ELIMINAR AREA *****");
 				listar_area();
 				System.out.println("NOMBRE: ");
@@ -92,7 +92,8 @@ public static int buscar_area(String nombre) {
 					Operaciones.error(2);
 				} else {
 					do {
-						System.out.println("Estás seguro de eliminar a: " + GlobalVars.areas.get(posicion).getNombreArea() + "[S/N]");
+						System.out.println("Estás seguro de eliminar a: "
+								+ GlobalVars.areas.get(posicion).getNombreArea() + "[S/N]");
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 						if (respuesta2.equals("S")) {
 							GlobalVars.areas.remove(posicion);
@@ -100,7 +101,7 @@ public static int buscar_area(String nombre) {
 
 						}
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N") || GlobalVars.areas.isEmpty());
-					if (respuesta2.equals("N") ) {
+					if (respuesta2.equals("N")) {
 						Operaciones.error(6);
 						break;
 					}
@@ -111,5 +112,5 @@ public static int buscar_area(String nombre) {
 			} while (respuesta.equals("S"));
 		}
 	}
-	
+
 }
