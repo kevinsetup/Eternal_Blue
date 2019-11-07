@@ -40,18 +40,19 @@ public static int buscar_area(String nombre) {
 	}
 
 	public static void editar_area() {
+		System.out.println("----- EDITAR AREA ----------");
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
-		}else {
+		} else {
 			int posicion;
-			String respuesta="N";
-			System.out.println("----- EDITAR AREA ----------");
+			String respuesta = "N";
+			
 			listar_area();
-			System.out.println("Nombre: ");
+			System.out.print("Nombre: ");
 			posicion = buscar_area(GlobalVars.leer.cadena());
 			if (posicion == -1) {
 				Operaciones.error(2);
-			}else {
+			} else {
 				System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
 				System.out.println("¿Desea Modificar Area? [S/N] : ");
 				respuesta = GlobalVars.leer.cadenaMayuscula();
@@ -61,7 +62,7 @@ public static int buscar_area(String nombre) {
 					Operaciones.salto_lineas(2);
 				}
 			}
-			
+
 		}
 	}
 
