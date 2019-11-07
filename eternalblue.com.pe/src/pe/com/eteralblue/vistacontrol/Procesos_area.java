@@ -42,28 +42,43 @@ public static int buscar_area(String nombre) {
 	}
 
 	public static void editar_area() {
-		System.out.println("----- EDITAR AREA ----------");
+		String respuesta2 = "";
+		System.out.println("--------- EDITAR AREA ----------");
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
 		} else {
 			int posicion;
 			String respuesta = "N";
-			
-			listar_area();
-			System.out.print("Nombre: ");
-			posicion = buscar_area(GlobalVars.leer.cadena());
-			if (posicion == -1) {
-				Operaciones.error(2);
-			} else {
-				System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
-				System.out.println("¿Desea Modificar Area? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Nombre: ");
-					GlobalVars.areas.get(posicion).setNombreArea(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
+			do {
+				listar_area();
+				System.out.print("Nombre: ");
+				posicion = buscar_area(GlobalVars.leer.cadena().toUpperCase());
+				if (posicion == -1) {
+					Operaciones.error(2);
+				} else {
+					do {
+						System.out.print("Estás seguro de editar a: " + GlobalVars.areas.get(posicion).getNombreArea()
+								+ "[S/N]");
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta2.equals("S")) {
+							System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
+							System.out.print("Nuevo Nombre: ");
+							GlobalVars.areas.get(posicion).setNombreArea(GlobalVars.leer.cadenaMayuscula());
+							Operaciones.salto_lineas(2);
+							
+						}
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N") || GlobalVars.areas.isEmpty());
+					if (respuesta2.equals("N")) {
+						Operaciones.error(6);
+						break;
+					}
+					do {
+
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+
 				}
-			}
+
+			} while (respuesta.equals("S"));
 
 		}
 	}
