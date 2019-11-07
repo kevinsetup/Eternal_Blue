@@ -23,16 +23,18 @@ public static int buscar_area(String nombre) {
 	}
 	
 	public static void registrar_area() {
+		System.out.println("--------- REGISTRAR AREA ------------");
+		Operaciones.salto_lineas(1);
 		String nombreA, respuesta = "N";
 		do {
-			System.out.println("----- REGISTRAR AREA----------");
+			Operaciones.salto_lineas(1);
 			System.out.print("NOMBRE: ");
-			nombreA = GlobalVars.leer.cadena();
+			nombreA = GlobalVars.leer.cadenaMayuscula();
 			GlobalVars.IdArea++;
 			Area area = new Area(GlobalVars.IdArea, nombreA);
 			GlobalVars.areas.add(area);
 			do {
-				System.out.print("żDesea registrar otra Area? [S/N]: ");
+				System.out.print("¿Desea registrar otra Area? [S/N]: ");
 				respuesta = GlobalVars.leer.cadenaMayuscula();
 			} while (!respuesta.equals("S") && !respuesta.equals("N"));
 		} while (respuesta.equals("S"));
