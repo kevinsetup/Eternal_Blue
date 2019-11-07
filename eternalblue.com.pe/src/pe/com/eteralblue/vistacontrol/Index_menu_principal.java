@@ -8,9 +8,10 @@ import utils.Operaciones;
 public class Index_menu_principal {
 
 	public static void menu() {
+
 		System.out.println("-*-*-*-*-* MENÚ PRINCIPAL -*-*-*-*-*-");
 		System.out.println("----- 1.- DATOS TRABAJADOR ----------");
-		System.out.println("----- 2.- DATOS ÁREA       ----------");
+		System.out.println("----- 2.- DATOS Ã�REA       ----------");
 		System.out.println("----- 3.- DATOS AFP        ----------");
 		System.out.println("----- 4.- GENERAR PLANILLA ----------");
 		System.out.println("----- 5.- VER PLANILLA     ----------");

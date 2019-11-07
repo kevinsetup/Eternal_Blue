@@ -5,7 +5,7 @@ import utils.Operaciones;
 
 public class Index_menu_area {
 	public static void menu_area() {
-		System.out.println("-*-*-*-*-* MENÚ AREA -*-*-*-*-*-");
+		System.out.println("-*-*-*-*-* MENÃš AREA -*-*-*-*-*-");
 		System.out.println("----- 1.- REGISTRAR ÁREA  ----------");
 		System.out.println("----- 2.- EDITAR    ÁREA  ----------");
 		System.out.println("----- 3.- LISTAR    ÁREA  ----------");
