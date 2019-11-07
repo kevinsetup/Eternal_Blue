@@ -83,22 +83,32 @@ public class Procesos_area {
 			Operaciones.error(2);
 		} else {
 			do {
-
 				System.out.println("***** ELIMINAR AREA *****");
 				listar_area();
 				System.out.println("NOMBRE: ");
-				posicion = buscar_area(GlobalVars.leer.cadena());
+				posicion = buscar_area(GlobalVars.leer.cadenaMayuscula());
 				if (posicion == -1) {
 					Operaciones.error(2);
 				} else {
 					do {
+
 						System.out.println("Estás seguro de eliminar a: "
 								+ GlobalVars.areas.get(posicion).getNombreArea() + "[S/N]");
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 						if (respuesta2.equals("S")) {
-							GlobalVars.areas.remove(posicion);
-							System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+							int id = GlobalVars.areas.get(posicion).getIdArea();
+							for (int i = 0; i < GlobalVars.trabajadores.size(); i++) {
+								if (id == GlobalVars.trabajadores.get(i).getIdArea()) {
+									System.out
+											.println("NO SE PUEDE ELIMINAR PORQUE HAY TRABAJADORES REGISTRADOS EN EL");
 
+									break;
+								} else {
+									GlobalVars.areas.remove(posicion);
+									System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+								}
+
+							}
 						}
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N") || GlobalVars.areas.isEmpty());
 					if (respuesta2.equals("N")) {
