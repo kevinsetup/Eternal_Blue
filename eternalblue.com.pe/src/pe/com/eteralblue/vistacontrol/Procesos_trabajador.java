@@ -12,7 +12,22 @@ public class Procesos_trabajador {
 		boolean resultado = false;
 		for (int i = 0; i < GlobalVars.trabajadores.size(); i++) {
 			if (GlobalVars.trabajadores.get(i).getDniPersona().equals(dni)) {
-				Operaciones.error(4);
+				Operaciones.error(8);
+				resultado = true;
+				break;
+			} else {
+				resultado = false;
+			}
+		}
+		return resultado;
+
+	}
+
+	public static boolean codigo_repetido(String CodigoT) {
+		boolean resultado = false;
+		for (int i = 0; i < GlobalVars.trabajadores.size(); i++) {
+			if (GlobalVars.trabajadores.get(i).getCodigoTrabajador().equals(CodigoT)) {
+				Operaciones.error(8);
 				resultado = true;
 				break;
 			} else {
@@ -49,7 +64,7 @@ public class Procesos_trabajador {
 		do {
 			System.out.println("-----Registrar Trabajador----------");
 			do {
-				System.out.println("DNI de la persona: ");
+				System.out.print("DNI : ");
 				DniPersonaT = GlobalVars.leer.cadena();
 			} while (dniRepetido(DniPersonaT) || !Operaciones.DNICorrecto(DniPersonaT)
 					|| !Operaciones.esNumero(DniPersonaT));
@@ -59,8 +74,10 @@ public class Procesos_trabajador {
 			ApellidoPatT = GlobalVars.leer.cadena();
 			System.out.print("APELLIDO MATERNO : ");
 			ApellidoMatT = GlobalVars.leer.cadena();
-			System.out.print("CÓDIGO : ");
-			CodigoT = GlobalVars.leer.cadena();
+			do {
+				System.out.print("CÓDIGO : ");
+				CodigoT = GlobalVars.leer.cadena();
+			} while (codigo_repetido(CodigoT) || !Operaciones.codigoCorrecto(CodigoT));
 			System.out.print("PROFESION : ");
 			ProfesionT = GlobalVars.leer.cadena();
 			System.out.print("SUELDO BASE : ");
@@ -157,14 +174,7 @@ public class Procesos_trabajador {
 					GlobalVars.trabajadores.get(posicion).setApellidoMatPersona(GlobalVars.leer.cadena());
 					Operaciones.salto_lineas(2);
 				}
-				System.out.println("Codigo Actual: " + GlobalVars.trabajadores.get(posicion).getCodigoTrabajador());
-				System.out.println("¿Desea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Codigo: ");
-					GlobalVars.trabajadores.get(posicion).setCodigoTrabajador(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
-				}
+
 				System.out
 						.println("Profesion Actual: " + GlobalVars.trabajadores.get(posicion).getProfesionTrabajador());
 				System.out.println("¿Desea Modificar? [S/N] : ");

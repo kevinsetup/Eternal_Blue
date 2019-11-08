@@ -67,12 +67,17 @@ public class Procesos_area {
 
 	public static void listar_area() {
 		int num = 0;
-		System.out.println("----- LISTA DE AREAS ----------");
-		System.out.println("NÂ° \tNOMBRE");
-		for (Area area : GlobalVars.areas) {
-			num++;
-			System.out.println(num + "\t" + area.getNombreArea());
+		if (GlobalVars.areas.isEmpty()) {
+			Operaciones.error(2);
+		} else {
 
+			System.out.println("----- LISTA DE AREAS ----------");
+			System.out.println("NÂ° \tNOMBRE");
+			for (Area area : GlobalVars.areas) {
+				num++;
+				System.out.println(num + "\t" + area.getNombreArea());
+
+			}
 		}
 	}
 
@@ -92,31 +97,41 @@ public class Procesos_area {
 				} else {
 					do {
 
-						System.out.println("EstÃ¡s seguro de eliminar a: "
-								+ GlobalVars.areas.get(posicion).getNombreArea() + "[S/N]");
+						System.out.println("Estás seguro de eliminar esta área? [S/N]");
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 						if (respuesta2.equals("S")) {
 							int id = GlobalVars.areas.get(posicion).getIdArea();
 							for (int i = 0; i < GlobalVars.trabajadores.size(); i++) {
 								if (id == GlobalVars.trabajadores.get(i).getIdArea()) {
 									System.out
-											.println("NO SE PUEDE ELIMINAR PORQUE HAY TRABAJADORES REGISTRADOS EN EL");
-
+											.println("NO SE PUEDE ELIMINAR, TRABAJADORES EXISTENTES EN ESTE REGISTRO");
 									break;
 								} else {
 									GlobalVars.areas.remove(posicion);
 									System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+									break;
 								}
-
 							}
+							if (GlobalVars.trabajadores.isEmpty()) {
+								GlobalVars.areas.remove(posicion);
+								System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+							}
+
 						}
-					} while (!respuesta2.equals("S") && !respuesta2.equals("N") || GlobalVars.areas.isEmpty());
+
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
 					if (respuesta2.equals("N")) {
-						Operaciones.error(6);
+						System.out.println("REGISTRO ABORTADO");
+						break;
+					}
+					if (GlobalVars.areas.isEmpty()) {
+						System.out
+								.println("NO SE PUEDEN ELIMINAR MÁS REGISTROS, PORQUE TODOS ESTOS HAN SIDO ELIMINADOS");
 						break;
 					}
 					do {
-
+						System.out.println("¿Desea eliminar otra área?[S/N] =  ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
 					} while (!respuesta.equals("S") && !respuesta.equals("N"));
 				}
 			} while (respuesta.equals("S"));

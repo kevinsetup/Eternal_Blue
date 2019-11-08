@@ -24,6 +24,11 @@ public class Operaciones {
 			System.out.println("SOLO DEBE CONTENER DIGITOS");
 		} else if (tipo == 6) {
 			System.out.println("REGISTRO NO ELIMINADO");
+		} else if (tipo == 7) {
+			System.out.println("CANTIDAD DE DÍGITOS INCORRECTA");
+
+		} else if (tipo == 8) {
+			System.out.println("REGISTRO REPETIDO");
 		}
 
 	}
@@ -51,6 +56,17 @@ public class Operaciones {
 		}
 		return esnumero;
 
+	}
+
+	public static boolean codigoCorrecto(String CodigoT) {
+		boolean correcto = false;
+		if (CodigoT.length() == 4) {
+			correcto = true;
+		} else {
+			error(7);
+			correcto = false;
+		}
+		return correcto;
 	}
 
 	public static String retornar_nombre_afp(int IdAfp) {

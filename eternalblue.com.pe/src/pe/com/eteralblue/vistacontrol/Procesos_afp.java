@@ -5,13 +5,30 @@ import utils.GlobalVars;
 import utils.Operaciones;
 
 public class Procesos_afp {
+	public static boolean afp_repetido(String afp) {
+		boolean repetido = false;
+		for (int i = 0; i < GlobalVars.afps.size(); i++) {
+			if (afp.equals(GlobalVars.afps.get(i).getNombreAfp())) {
+				Operaciones.error(8);
+				repetido = true;
+				break;
+			} else {
+				repetido = false;
+			}
+		}
+		return repetido;
+
+	}
+
 	public static void registrar_afp() {
 		String nombreA, respuesta = "N";
 		double porcentajeP;
 		do {
 			System.out.println("----- REGISTRAR AFP----------");
-			System.out.print("NOMBRE : ");
-			nombreA = GlobalVars.leer.cadenaMayuscula();
+			do {
+				System.out.print("NOMBRE : ");
+				nombreA = GlobalVars.leer.cadenaMayuscula();
+			} while (afp_repetido(nombreA));
 			System.out.print("PORCENTAJE :");
 			porcentajeP = GlobalVars.leer.decimal();
 			GlobalVars.IdAfp++;
@@ -85,7 +102,8 @@ public class Procesos_afp {
 		} else {
 			System.out.println("N° \tNOMBRE \tPORCENTAJE");
 			for (Afp afp : GlobalVars.afps) {
-				System.out.println(num++ + "\t" + afp.getNombreAfp() + "\t" + afp.getPorcentajeAfp());
+				num++;
+				System.out.println(num + "\t" + afp.getNombreAfp() + "\t" + afp.getPorcentajeAfp());
 			}
 		}
 
@@ -127,9 +145,21 @@ public class Procesos_afp {
 						System.out.println("Estás seguro de eliminar este afp[S/N]");
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 						if (respuesta2.equals("S")) {
-							GlobalVars.afps.remove(posicion);
-							System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
-
+							int id = GlobalVars.afps.get(posicion).getIdAfp();
+							for (int i = 0; i < GlobalVars.trabajadores.size(); i++) {
+								if (id == GlobalVars.trabajadores.get(i).getIdAfp()) {
+									System.out.println("NO SE PUEDE ELIMINAR PORQUE HAY TRABAJADORES REGISTRADOS");
+									break;
+								} else {
+									GlobalVars.afps.remove(posicion);
+									System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+									break;
+								}
+							}
+							if (GlobalVars.trabajadores.isEmpty()) {
+								GlobalVars.afps.remove(posicion);
+								System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+							}
 						}
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
 					if (respuesta2.equals("N")) {
@@ -142,7 +172,8 @@ public class Procesos_afp {
 						break;
 					}
 					do {
-
+						System.out.println("¿Desea eliminar otra afp?[S/N] =  ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
 					} while (!respuesta.equals("S") && !respuesta.equals("N"));
 				}
 
