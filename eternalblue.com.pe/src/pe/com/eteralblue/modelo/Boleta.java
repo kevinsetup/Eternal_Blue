@@ -2,6 +2,8 @@ package pe.com.eteralblue.modelo;
 
 public class Boleta {
 	private int IdBoleta;
+	private int AnioBoleta;
+	private int MesBoleta;
 	private double SueldoBasebBoleta;
 	private double GratificacionBoleta;
 	private double BonificacionBoleta;
@@ -18,11 +20,13 @@ public class Boleta {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Boleta(int idBoleta, double sueldoBasebBoleta, double gratificacionBoleta, double bonificacionBoleta,
-			double horasExtrasBoleta, double asignacionFamiliarBoleta, double tardanzasBoleta, double faltasBoleta,
-			double afpBoleta, double diezmoBoleta, int idTrabajador) {
+	public Boleta(int idBoleta, int anioBoleta, int mesBoleta, double sueldoBasebBoleta, double gratificacionBoleta,
+			double bonificacionBoleta, double horasExtrasBoleta, double asignacionFamiliarBoleta,
+			double tardanzasBoleta, double faltasBoleta, double afpBoleta, double diezmoBoleta, int idTrabajador) {
 		super();
 		IdBoleta = idBoleta;
+		AnioBoleta = anioBoleta;
+		MesBoleta = mesBoleta;
 		SueldoBasebBoleta = sueldoBasebBoleta;
 		GratificacionBoleta = gratificacionBoleta;
 		BonificacionBoleta = bonificacionBoleta;
@@ -41,6 +45,22 @@ public class Boleta {
 
 	public void setIdBoleta(int idBoleta) {
 		IdBoleta = idBoleta;
+	}
+
+	public int getAnioBoleta() {
+		return AnioBoleta;
+	}
+
+	public void setAnioBoleta(int anioBoleta) {
+		AnioBoleta = anioBoleta;
+	}
+
+	public int getMesBoleta() {
+		return MesBoleta;
+	}
+
+	public void setMesBoleta(int mesBoleta) {
+		MesBoleta = mesBoleta;
 	}
 
 	public double getSueldoBasebBoleta() {

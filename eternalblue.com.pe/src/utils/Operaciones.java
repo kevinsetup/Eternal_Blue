@@ -90,4 +90,17 @@ public class Operaciones {
 		return nombre;
 	}
 
+	public static String recortar_nombres(String nombre) {
+		String nombrecortado = nombre;
+		if (nombre.length() > 10) {
+			nombrecortado = nombre.substring(0, 8) + "...";
+		} else if (nombre.length() < 8) {
+			nombrecortado = nombre + "\t";
+		} else {
+			nombrecortado = nombre + " ";
+		}
+		return nombrecortado;
+
+	}
+
 }

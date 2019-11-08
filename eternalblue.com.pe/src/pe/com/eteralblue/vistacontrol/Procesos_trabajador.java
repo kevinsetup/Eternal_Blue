@@ -217,14 +217,18 @@ public class Procesos_trabajador {
 
 	public static void listar_trabajador() {
 		int num = 0;
+
 		System.out.println("----- LISTA DE TRABAJADORES ----------");
 		System.out.println(
 				"N° \tDniTrabajador \tNombre \tApellidoPaterno \tApellidoMaterno \tCodigo \tProfesión \tSueldoBase \tFechaIngreso \tCantidadHijos \tIdArea \tIdAfp");
 		for (Trabajador trabajador : GlobalVars.trabajadores) {
 			num++;
-			System.out.println(num + "\t" + trabajador.getDniPersona() + "\t" + trabajador.getNombrePersona() + "\t"
-					+ trabajador.getApellidoPatPersona() + "\t" + trabajador.getApellidoMatPersona() + "\t"
-					+ trabajador.getCodigoTrabajador() + "\t" + trabajador.getProfesionTrabajador() + "\t"
+			System.out.println(num + "\t" + trabajador.getDniPersona() + "\t"
+					+ Operaciones.recortar_nombres(trabajador.getNombrePersona()) + "\t"
+					+ Operaciones.recortar_nombres(trabajador.getApellidoPatPersona()) + "\t"
+					+ Operaciones.recortar_nombres(trabajador.getApellidoMatPersona()) + "\t"
+					+ trabajador.getCodigoTrabajador() + "\t"
+					+ Operaciones.recortar_nombres(trabajador.getProfesionTrabajador()) + "\t"
 					+ trabajador.getSueldoBaseTrabajador() + "\t" + trabajador.getFechaInTrabajador() + "\t"
 					+ trabajador.getCantidadHijosTrabajador() + "\t"
 					+ Operaciones.retornar_nombre_area(trabajador.getIdArea()) + "\t"
