@@ -9,7 +9,7 @@ import utils.Operaciones;
 
 public class Procesos_menu_generar_planilla {
 
-	public static void registro_minutos(double minutos, double tardanzasB) {
+	public static double registro_minutos(double minutos, double tardanzasB) {
 		for (Trabajador trabajador : GlobalVars.trabajadores) {
 			System.out.println("-------- TARDANZAS:MINUTOS --------");
 			minutos = GlobalVars.leer.decimal();
@@ -29,9 +29,11 @@ public class Procesos_menu_generar_planilla {
 			tardanzasB = 23;
 		}
 		System.out.println("DECUENTO DE = " + tardanzasB + " SOLES ");
+		return tardanzasB;
+
 	}
 
-	public static void registro_horas(double horas, double tardanzasB) {
+	public static double registro_horas(double horas, double tardanzasB) {
 		for (Trabajador trabajador : GlobalVars.trabajadores) {
 			System.out.println("-------- TARDANZAS:HORAS --------");
 			horas = GlobalVars.leer.decimal();
@@ -51,6 +53,8 @@ public class Procesos_menu_generar_planilla {
 			tardanzasB = 95;
 		}
 		System.out.println("DECUENTO DE = " + tardanzasB + " SOLES ");
+		return tardanzasB;
+
 	}
 
 	public static double retornar_porcentaje(int id) {
@@ -110,9 +114,9 @@ public class Procesos_menu_generar_planilla {
 
 			opcion = GlobalVars.leer.entero();
 			if (opcion == 1) {
-				registro_minutos(minutos, tardanzasB);
+				tardanzasB = registro_minutos(minutos, tardanzasB);
 			} else if (opcion == 2) {
-				registro_horas(horas, tardanzasB);
+				tardanzasB = registro_horas(horas, tardanzasB);
 			}
 
 			System.out.println("-------- FALTAS  --------");
@@ -120,7 +124,7 @@ public class Procesos_menu_generar_planilla {
 			if (diasB >= 1 && diasB <= 3) {
 				faltasB = 150;
 			} else if (diasB > 4) {
-				tardanzasB = 350;
+				faltasB = 350;
 			}
 			System.out.println("DESCUENTO = " + faltasB);
 
@@ -131,7 +135,9 @@ public class Procesos_menu_generar_planilla {
 			System.out.println("SUELDO BASE = " + sueldoBaseB);
 			System.out.println("PORCENTAJE AFP = " + retornar_porcentaje(trabajador.getIdAfp()));
 			double descuento = sueldoBaseB * (retornar_porcentaje(trabajador.getIdAfp()) / 100);
+			afpB = descuento;
 			System.out.println("DESCUENTO AFP = " + retornar_porcentaje(trabajador.getIdAfp()) / 100 + "%");
+			System.out.println("DESCUENTO = " + afpB);
 			System.out.println("TOTAL = " + (sueldoBaseB - descuento));
 
 			System.out.println("-------- DIEZMO  --------");
