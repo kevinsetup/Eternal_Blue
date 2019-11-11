@@ -68,12 +68,18 @@ public class Procesos_trabajador {
 				DniPersonaT = GlobalVars.leer.cadena();
 			} while (dniRepetido(DniPersonaT) || !Operaciones.DNICorrecto(DniPersonaT)
 					|| !Operaciones.esNumero(DniPersonaT));
-			System.out.print("NOMBRE: ");
-			NombreT = GlobalVars.leer.cadenaMayuscula();
-			System.out.print("APELLIDO PATERNO : ");
-			ApellidoPatT = GlobalVars.leer.cadenaMayuscula();
-			System.out.print("APELLIDO MATERNO : ");
-			ApellidoMatT = GlobalVars.leer.cadenaMayuscula();
+			do {
+				System.out.print("NOMBRE: ");
+				NombreT = GlobalVars.leer.cadenaMayuscula();
+			} while (!Operaciones.validar_string(NombreT));
+			do {
+				System.out.print("APELLIDO PATERNO : ");
+				ApellidoPatT = GlobalVars.leer.cadenaMayuscula();
+			} while (!Operaciones.validar_string(ApellidoPatT));
+			do {
+				System.out.print("APELLIDO MATERNO : ");
+				ApellidoMatT = GlobalVars.leer.cadenaMayuscula();
+			} while (!Operaciones.validar_string(ApellidoMatT));
 			do {
 				System.out.print("CÓDIGO : ");
 				CodigoT = GlobalVars.leer.cadenaMayuscula();

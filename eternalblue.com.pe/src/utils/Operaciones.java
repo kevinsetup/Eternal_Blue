@@ -76,6 +76,8 @@ public class Operaciones {
 
 		} else if (tipo == 8) {
 			System.out.println("REGISTRO REPETIDO");
+		} else if (tipo == 9) {
+             System.out.println("SOLO DEBE CONTENER LETRAS");
 		}
 
 	}
@@ -147,6 +149,18 @@ public class Operaciones {
 			nombrecortado = nombre + " ";
 		}
 		return nombrecortado;
+
+	}
+
+	public static boolean validar_string(String cadena) {
+		boolean correcto = false;
+		if (cadena.matches("[a-zA-z]+")) {
+			correcto = true;
+		} else {
+			error(9);
+			correcto = false;
+		}
+		return correcto;
 
 	}
 

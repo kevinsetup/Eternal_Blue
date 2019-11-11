@@ -75,7 +75,7 @@ public class Index_menu_principal {
 				break;
 			case 6:
 				Operaciones.salto_lineas(3);
-				Procesos_funcion_matematica.funcion_matematica();
+				
 				Operaciones.salto_lineas(2);
 
 				break;
