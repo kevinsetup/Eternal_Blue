@@ -2,6 +2,8 @@ package pe.com.eteralblue.vistacontrol;
 
 import pe.com.eteralblue.modelo.Boleta;
 import utils.GlobalVars;
+import utils.Operaciones;
+
 import java.io.*;
 
 import javax.swing.JFileChooser;
@@ -32,8 +34,8 @@ public class Procesos_menu_verplanilla {
 				"N° \tAÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tAFP \tDIEZMO \tNOMBRE \tTOTAL ");
 		for (Boleta boleta : GlobalVars.boletas) {
 			num++;
-			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t" + boleta.getMesBoleta() + "\t\t"
-					+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t"
+			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t" + Operaciones.mes(boleta.getMesBoleta())
+					+ "\t\t" + boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t"
 					+ boleta.getBonificacionBoleta() + "\t\t" + boleta.getHorasExtrasBoleta() + "\t\t"
 					+ boleta.getAsignacionFamiliarBoleta() + "\t\t" + boleta.getTardanzasBoleta() + "\t\t"
 					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t\t" + boleta.getDiezmoBoleta()
@@ -78,7 +80,8 @@ public class Procesos_menu_verplanilla {
 									"AÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tDIEZMO \tNOMBRE \tTOTAL"));
 
 							for (Boleta boleta : GlobalVars.boletas) {
-								doc.add(new Paragraph(boleta.getAnioBoleta() + "\t" + boleta.getMesBoleta() + "\t\t"
+								doc.add(new Paragraph(boleta.getAnioBoleta() + "\t"
+										+ Operaciones.mes(boleta.getMesBoleta()) + "\t\t"
 										+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta()
 										+ "\t\t" + boleta.getBonificacionBoleta() + "\t\t"
 										+ boleta.getHorasExtrasBoleta() + "\t\t" + boleta.getAsignacionFamiliarBoleta()

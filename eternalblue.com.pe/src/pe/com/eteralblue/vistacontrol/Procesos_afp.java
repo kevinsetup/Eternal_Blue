@@ -38,7 +38,7 @@ public class Procesos_afp {
 				System.out.print("¿Desea registrar otro Afp? [S/N]: ");
 				respuesta = GlobalVars.leer.cadenaMayuscula();
 			} while (!respuesta.equals("S") && !respuesta.equals("N"));
-			Operaciones.salto_lineas(4);
+			Operaciones.salto_lineas(2);
 		} while (respuesta.equals("S"));
 
 	}
@@ -88,6 +88,7 @@ public class Procesos_afp {
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 
 					} while (!respuesta2.equals("S") && !respuesta.equals("N"));
+					Operaciones.salto_lineas(3);
 				}
 			} while (respuesta2.equals("S"));
 		}
@@ -158,7 +159,7 @@ public class Procesos_afp {
 							}
 							if (GlobalVars.trabajadores.isEmpty()) {
 								GlobalVars.afps.remove(posicion);
-								System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+								System.out.println("REISTRO ELIMINADO CORRECTAMENTE");
 							}
 						}
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
@@ -174,7 +175,9 @@ public class Procesos_afp {
 					do {
 						System.out.println("¿Desea eliminar otra afp?[S/N] =  ");
 						respuesta = GlobalVars.leer.cadenaMayuscula();
+
 					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					Operaciones.salto_lineas(3);
 				}
 
 			} while (respuesta.equals("S"));

@@ -1,6 +1,53 @@
 package utils;
 
 public class Operaciones {
+	public static String mes(int mes) {
+		String nombre_mes = " ";
+		switch (mes) {
+		case 1:
+			nombre_mes = "ENERO";
+			break;
+		case 2:
+			nombre_mes = "FEBRERO";
+			break;
+		case 3:
+			nombre_mes = "MARZO";
+			break;
+		case 4:
+			nombre_mes = "ABRIL";
+			break;
+		case 5:
+			nombre_mes = "MAYO";
+			break;
+		case 6:
+			nombre_mes = "JUNIO";
+			break;
+		case 7:
+			nombre_mes = "JULIO";
+			break;
+		case 8:
+			nombre_mes = "AGOSTO";
+			break;
+		case 9:
+			nombre_mes = "SETIEMBRE";
+			break;
+		case 10:
+			nombre_mes = "OCTUBRE";
+			break;
+		case 11:
+			nombre_mes = "NOVIEMBRE";
+			break;
+		case 12:
+			nombre_mes = "DICIEMBRE";
+			break;
+
+		default:
+			nombre_mes = "ERROR_MES";
+			break;
+		}
+		return nombre_mes;
+
+	}
 
 	public static void salto_lineas(int cantidad) {
 

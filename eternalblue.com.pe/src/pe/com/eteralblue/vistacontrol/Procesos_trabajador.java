@@ -46,7 +46,7 @@ public class Procesos_trabajador {
 			if (Dni.equals(GlobalVars.trabajadores.get(posicion).getDniPersona())) {
 				encontrado = true;
 			}
-		} while (encontrado == false && posicion < GlobalVars.areas.size() - 1);
+		} while (encontrado == false && posicion < GlobalVars.trabajadores.size() - 1);
 
 		if (encontrado == false) {
 			posicion = -1;
@@ -69,27 +69,27 @@ public class Procesos_trabajador {
 			} while (dniRepetido(DniPersonaT) || !Operaciones.DNICorrecto(DniPersonaT)
 					|| !Operaciones.esNumero(DniPersonaT));
 			System.out.print("NOMBRE: ");
-			NombreT = GlobalVars.leer.cadena();
+			NombreT = GlobalVars.leer.cadenaMayuscula();
 			System.out.print("APELLIDO PATERNO : ");
-			ApellidoPatT = GlobalVars.leer.cadena();
+			ApellidoPatT = GlobalVars.leer.cadenaMayuscula();
 			System.out.print("APELLIDO MATERNO : ");
-			ApellidoMatT = GlobalVars.leer.cadena();
+			ApellidoMatT = GlobalVars.leer.cadenaMayuscula();
 			do {
 				System.out.print("C覦IGO : ");
-				CodigoT = GlobalVars.leer.cadena();
+				CodigoT = GlobalVars.leer.cadenaMayuscula();
 			} while (codigo_repetido(CodigoT) || !Operaciones.codigoCorrecto(CodigoT));
 			System.out.print("PROFESION : ");
-			ProfesionT = GlobalVars.leer.cadena();
+			ProfesionT = GlobalVars.leer.cadenaMayuscula();
 			System.out.print("SUELDO BASE : ");
 			SueldoBasT = GlobalVars.leer.decimal();
 			System.out.print("FECHA DE INGRESO: ");
-			FechaIngT = GlobalVars.leer.cadena();
+			FechaIngT = GlobalVars.leer.cadenaMayuscula();
 			System.out.print("CANTIDAD HIJOS : ");
 			cantidadHijosT = GlobalVars.leer.entero();
 
-			Procesos_area.listar_area();
 			do {
-				System.out.println("AREA : ");
+				Procesos_area.listar_area();
+				System.out.print("AREA : ");
 				area = GlobalVars.leer.cadenaMayuscula();
 				posicion = Procesos_area.buscar_area(area);
 				if (posicion == -1) {
@@ -104,10 +104,11 @@ public class Procesos_trabajador {
 
 				}
 			} while (!encontrado);
-
+			Operaciones.salto_lineas(2);
 			do {
+
 				Procesos_afp.listar_afp();
-				System.out.println("AFP : ");
+				System.out.print("AFP : ");
 				afp = GlobalVars.leer.cadenaMayuscula();
 				posicion2 = Procesos_afp.encontrar_nombre(afp);
 				if (posicion2 == -1) {
@@ -140,119 +141,189 @@ public class Procesos_trabajador {
 			Operaciones.error(2);
 		} else {
 			int posicion;
-			String respuesta = "N";
-			System.out.println("----- EDITAR TRABAJADOR ----------");
-			listar_trabajador();
-			System.out.println("Dni: ");
-			posicion = buscar_Trabajador(GlobalVars.leer.cadena());
-			if (posicion == -1) {
-				Operaciones.error(2);
-			} else {
-				System.out.println("Nombre Actual: " + GlobalVars.trabajadores.get(posicion).getNombrePersona());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Nombre: ");
-					GlobalVars.trabajadores.get(posicion).setNombrePersona(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
-				}
-				System.out.println(
-						"Apellido Paterno Actual: " + GlobalVars.trabajadores.get(posicion).getApellidoPatPersona());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Apellido Paterno: ");
-					GlobalVars.trabajadores.get(posicion).setApellidoPatPersona(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
-				}
-				System.out.println(
-						"Apellido Materno Actual: " + GlobalVars.trabajadores.get(posicion).getApellidoMatPersona());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Apellido Materno: ");
-					GlobalVars.trabajadores.get(posicion).setApellidoMatPersona(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
-				}
+			String respuesta = "N", respuesta2 = "";
+			do {
+				System.out.println("----- EDITAR TRABAJADOR ----------");
+				listar_trabajador();
+				System.out.println("Dni: ");
+				posicion = buscar_Trabajador(GlobalVars.leer.cadena());
+				if (posicion == -1) {
+					Operaciones.error(2);
+				} else {
+					do {
+						System.out
+								.println("Nombre Actual: " + GlobalVars.trabajadores.get(posicion).getNombrePersona());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nuevo Nombre: ");
+							GlobalVars.trabajadores.get(posicion).setNombrePersona(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
 
-				System.out
-						.println("Profesion Actual: " + GlobalVars.trabajadores.get(posicion).getProfesionTrabajador());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nueva Profesi贸n: ");
-					GlobalVars.trabajadores.get(posicion).setProfesionTrabajador(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
+					do {
+						System.out.println("Apellido Paterno Actual: "
+								+ GlobalVars.trabajadores.get(posicion).getApellidoPatPersona());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nuevo Apellido Paterno: ");
+							GlobalVars.trabajadores.get(posicion).setApellidoPatPersona(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+					do {
+						System.out.println("Apellido Materno Actual: "
+								+ GlobalVars.trabajadores.get(posicion).getApellidoMatPersona());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nuevo Apellido Materno: ");
+							GlobalVars.trabajadores.get(posicion).setApellidoMatPersona(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+					do {
+
+						System.out.println(
+								"Profesion Actual: " + GlobalVars.trabajadores.get(posicion).getProfesionTrabajador());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nueva Profesi贸n: ");
+							GlobalVars.trabajadores.get(posicion).setProfesionTrabajador(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+					do {
+						System.out.println("Sueldo Base Actual: "
+								+ GlobalVars.trabajadores.get(posicion).getSueldoBaseTrabajador());
+						System.out.println("翫esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nuevo Sueldo Base: ");
+							GlobalVars.trabajadores.get(posicion).setSueldoBaseTrabajador(GlobalVars.leer.decimal());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					do {
+						System.out.println("Fecha Ingresos Actual: "
+								+ GlobalVars.trabajadores.get(posicion).getFechaInTrabajador());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nueva Fecha de Ingresos: ");
+							GlobalVars.trabajadores.get(posicion).setFechaInTrabajador(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					do {
+						System.out.println("Cantidad Hijos Actual: "
+								+ GlobalVars.trabajadores.get(posicion).getCantidadHijosTrabajador());
+						System.out.println("緿esea Modificar? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta.equals("S")) {
+							System.out.println("Nueva Cantidad Hijos: ");
+							GlobalVars.trabajadores.get(posicion).setCantidadHijosTrabajador(GlobalVars.leer.entero());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					System.out.println("TODOS LOS REGISTROS HAN SIDO EDITADOS CON 蒟ITO");
+					do {
+						System.out.println("緿esea seguir editando?[S/N]");
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+
+					} while (!respuesta2.equals("S") && !respuesta.equals("N"));
 				}
-				System.out.println(
-						"Sueldo Base Actual: " + GlobalVars.trabajadores.get(posicion).getSueldoBaseTrabajador());
-				System.out.println("翫esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Sueldo Base: ");
-					GlobalVars.trabajadores.get(posicion).setSueldoBaseTrabajador(GlobalVars.leer.decimal());
-					Operaciones.salto_lineas(2);
-				}
-				System.out.println(
-						"Fecha Ingresos Actual: " + GlobalVars.trabajadores.get(posicion).getFechaInTrabajador());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nueva Fecha de Ingresos: ");
-					GlobalVars.trabajadores.get(posicion).setFechaInTrabajador(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
-				}
-				System.out.println(
-						"Cantidad Hijos Actual: " + GlobalVars.trabajadores.get(posicion).getCantidadHijosTrabajador());
-				System.out.println("緿esea Modificar? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nueva Cantidad Hijos: ");
-					GlobalVars.trabajadores.get(posicion).setCantidadHijosTrabajador(GlobalVars.leer.entero());
-					Operaciones.salto_lineas(2);
-				}
-			}
+			} while (respuesta2.equals("S"));
 		}
 	}
 
 	public static void listar_trabajador() {
 		int num = 0;
-
-		System.out.println("----- LISTA DE TRABAJADORES ----------");
-		System.out.println(
-				"N掳 \tDniTrabajador \tNombre \tApellidoPaterno \tApellidoMaterno \tCodigo \tProfesi贸n \tSueldoBase \tFechaIngreso \tCantidadHijos \tIdArea \tIdAfp");
-		for (Trabajador trabajador : GlobalVars.trabajadores) {
-			num++;
-			System.out.println(num + "\t" + trabajador.getDniPersona() + "\t"
-					+ Operaciones.recortar_nombres(trabajador.getNombrePersona()) + "\t"
-					+ Operaciones.recortar_nombres(trabajador.getApellidoPatPersona()) + "\t"
-					+ Operaciones.recortar_nombres(trabajador.getApellidoMatPersona()) + "\t"
-					+ trabajador.getCodigoTrabajador() + "\t"
-					+ Operaciones.recortar_nombres(trabajador.getProfesionTrabajador()) + "\t"
-					+ trabajador.getSueldoBaseTrabajador() + "\t" + trabajador.getFechaInTrabajador() + "\t"
-					+ trabajador.getCantidadHijosTrabajador() + "\t"
-					+ Operaciones.retornar_nombre_area(trabajador.getIdArea()) + "\t"
-					+ Operaciones.retornar_nombre_afp(trabajador.getIdAfp()));
-
-		}
-	}
-
-	public static void eliminar_trabajador() {
 		if (GlobalVars.trabajadores.isEmpty()) {
 			Operaciones.error(2);
 		} else {
-			int posicion;
-			System.out.println("----- ELIMINAR TRABAJADORES ----------");
-			listar_trabajador();
-			System.out.println("DNI: ");
-			posicion = buscar_Trabajador(GlobalVars.leer.cadena());
-			if (posicion == -1) {
-				Operaciones.error(2);
-			} else {
-				GlobalVars.trabajadores.remove(posicion);
-				System.out.println("** TRABAJADOR ELIMINADO CORRECTAMENTE **");
+			System.out.println("----- LISTA DE TRABAJADORES ----------");
+			System.out.println(
+					"N掳 \tDniTrabajador \tNombre \tApellidoPaterno \tApellidoMaterno \tCodigo \tProfesi贸n \tSueldoBase \tFechaIngreso \tCantidadHijos \tIdArea \tIdAfp");
+			for (Trabajador trabajador : GlobalVars.trabajadores) {
+				num++;
+				System.out.println(num + "\t" + trabajador.getDniPersona() + "\t"
+						+ Operaciones.recortar_nombres(trabajador.getNombrePersona()) + "\t"
+						+ Operaciones.recortar_nombres(trabajador.getApellidoPatPersona()) + "\t"
+						+ Operaciones.recortar_nombres(trabajador.getApellidoMatPersona()) + "\t"
+						+ trabajador.getCodigoTrabajador() + "\t"
+						+ Operaciones.recortar_nombres(trabajador.getProfesionTrabajador()) + "\t"
+						+ trabajador.getSueldoBaseTrabajador() + "\t" + trabajador.getFechaInTrabajador() + "\t"
+						+ trabajador.getCantidadHijosTrabajador() + "\t"
+						+ Operaciones.retornar_nombre_area(trabajador.getIdArea()) + "\t"
+						+ Operaciones.retornar_nombre_afp(trabajador.getIdAfp()));
+
 			}
 		}
 	}
 
+	public static void eliminar_trabajador() {
+		System.out.println("----- ELIMINAR TRABAJADORES ----------");
+		String respuesta = "N", respuesta2 = "";
+		int posicion;
+		if (GlobalVars.trabajadores.isEmpty()) {
+			Operaciones.error(2);
+		} else {
+			do {
+				listar_trabajador();
+				System.out.print("DNI: ");
+				posicion = buscar_Trabajador(GlobalVars.leer.cadena());
+				if (posicion == -1) {
+					Operaciones.error(2);
+				} else {
+					do {
+						System.out.println("縀st醩 seguro de eliminar este trabajador[S/N]");
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+						if (respuesta2.equals("S")) {
+							int id = GlobalVars.trabajadores.get(posicion).getIdPersona();
+							for (int i = 0; i < GlobalVars.boletas.size(); i++) {
+								if (id == GlobalVars.boletas.get(i).getIdTrabajador()) {
+									System.out.println("NO SE PUEDE ELIMINAR, BOLETAS REGISTRADAS");
+									break;
+								} else {
+									GlobalVars.trabajadores.remove(posicion);
+									System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+									break;
+								}
+
+							}
+							if (GlobalVars.boletas.isEmpty()) {
+								GlobalVars.trabajadores.remove(posicion);
+								System.out.println("REGISTRO ELIMINADO CORRECTAMENTE");
+							}
+						}
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
+					if (respuesta2.equals("N")) {
+						System.out.println("ABORTADO");
+						break;
+					}
+					if (GlobalVars.trabajadores.isEmpty()) {
+						System.out
+								.println("NO SE PUEDEN ELIMINAR M罶 REGISTROS, PORQUE TODOS ESTOS HAN SIDO ELIMINADOS");
+						break;
+					}
+					do {
+						System.out.println("緿esea eliminar otro trabajador?[S/N] =  ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+
+				}
+
+			} while (respuesta.equals("S"));
+		}
+
+	}
 }

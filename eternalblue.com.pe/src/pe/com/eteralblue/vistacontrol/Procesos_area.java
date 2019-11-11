@@ -35,6 +35,7 @@ public class Procesos_area {
 				System.out.print("Å¼Desea registrar otra Area? [S/N]: ");
 				respuesta = GlobalVars.leer.cadenaMayuscula();
 			} while (!respuesta.equals("S") && !respuesta.equals("N"));
+			Operaciones.salto_lineas(2);
 		} while (respuesta.equals("S"));
 
 	}
@@ -44,23 +45,35 @@ public class Procesos_area {
 			Operaciones.error(2);
 		} else {
 			int posicion;
-			String respuesta = "N";
-			System.out.println("----- EDITAR AREA ----------");
-			listar_area();
-			System.out.println("Nombre: ");
-			posicion = buscar_area(GlobalVars.leer.cadenaMayuscula());
-			if (posicion == -1) {
-				Operaciones.error(2);
-			} else {
-				System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
-				System.out.println("Â¿Desea Modificar Area? [S/N] : ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-				if (respuesta.equals("S")) {
-					System.out.println("Nuevo Nombre: ");
-					GlobalVars.areas.get(posicion).setNombreArea(GlobalVars.leer.cadena());
-					Operaciones.salto_lineas(2);
+			String respuesta = "N", respuesta2 = " ";
+			do {
+				System.out.println("----- EDITAR AREA ----------");
+				listar_area();
+				System.out.println("Nombre: ");
+				posicion = buscar_area(GlobalVars.leer.cadenaMayuscula());
+				if (posicion == -1) {
+					Operaciones.error(2);
+				} else {
+					do {
+						System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
+						System.out.println("Â¿Desea Modificar Area? [S/N] : ");
+						respuesta = GlobalVars.leer.cadenaMayuscula();
+
+						if (respuesta.equals("S")) {
+							System.out.println("Nuevo Nombre: ");
+							GlobalVars.areas.get(posicion).setNombreArea(GlobalVars.leer.cadena());
+							Operaciones.salto_lineas(2);
+						}
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					System.out.println("TODOS LOS REGISTROS HAN SIDO EDITADOS CON ÉXITO");
+					do {
+						System.out.println("¿Desea seguir editando?[S/N]");
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+
+					} while (!respuesta2.equals("S") && !respuesta.equals("N"));
+					Operaciones.salto_lineas(3);
 				}
-			}
+			} while (respuesta.equals("S"));
 
 		}
 	}
@@ -121,7 +134,7 @@ public class Procesos_area {
 
 					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
 					if (respuesta2.equals("N")) {
-						System.out.println("REGISTRO ABORTADO");
+						System.out.println("ABORTADO");
 						break;
 					}
 					if (GlobalVars.areas.isEmpty()) {
@@ -132,6 +145,7 @@ public class Procesos_area {
 					do {
 						System.out.println("¿Desea eliminar otra área?[S/N] =  ");
 						respuesta = GlobalVars.leer.cadenaMayuscula();
+						Operaciones.salto_lineas(3);
 					} while (!respuesta.equals("S") && !respuesta.equals("N"));
 				}
 			} while (respuesta.equals("S"));
