@@ -29,18 +29,19 @@ public class Procesos_menu_verplanilla {
 	public static void ver_planilla() {
 		int num = 0;
 		System.out.println(
-				"N° \tAÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tDIEZMO \tNOMBRE \tTOTAL ");
+				"N° \tAÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tAFP \tDIEZMO \tNOMBRE \tTOTAL ");
 		for (Boleta boleta : GlobalVars.boletas) {
 			num++;
 			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t" + boleta.getMesBoleta() + "\t\t"
 					+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t"
 					+ boleta.getBonificacionBoleta() + "\t\t" + boleta.getHorasExtrasBoleta() + "\t\t"
 					+ boleta.getAsignacionFamiliarBoleta() + "\t\t" + boleta.getTardanzasBoleta() + "\t\t"
-					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getDiezmoBoleta() + "\t\t"
-					+ buscar_nombre_id(boleta.getIdTrabajador()) + "\t"
+					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t\t" + boleta.getDiezmoBoleta()
+					+ "\t\t" + buscar_nombre_id(boleta.getIdTrabajador()) + "\t"
 					+ (boleta.getSueldoBasebBoleta() + boleta.getGratificacionBoleta() + boleta.getBonificacionBoleta()
 							+ boleta.getHorasExtrasBoleta() + boleta.getAsignacionFamiliarBoleta()
-							- boleta.getTardanzasBoleta() - boleta.getFaltasBoleta() - boleta.getDiezmoBoleta()));
+							- boleta.getTardanzasBoleta() - boleta.getFaltasBoleta() - boleta.getAfpBoleta()
+							- boleta.getDiezmoBoleta()));
 
 		}
 		generar_pdf();

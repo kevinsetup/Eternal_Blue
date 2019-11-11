@@ -9,15 +9,12 @@ public class Procesos_menu_generar_planilla {
 
 	public static double registro_minutos(double minutos, double tardanzasB) {
 		for (Trabajador trabajador : GlobalVars.trabajadores) {
-			System.out.println("-------- TARDANZAS:MINUTOS --------");
-			minutos = GlobalVars.leer.decimal();
-			while (minutos > 59) {
-				System.out.println("INTÉNTELO DE NUEVO : ");
-				tardanzasB = GlobalVars.leer.decimal();
-
-			}
-
+			do {
+				System.out.println("-------- TARDANZAS:MINUTOS --------");
+				minutos = GlobalVars.leer.decimal();
+			} while (minutos > 59);
 		}
+
 		if (minutos >= 10 && minutos <= 25) {
 			tardanzasB = 15;
 
@@ -33,13 +30,10 @@ public class Procesos_menu_generar_planilla {
 
 	public static double registro_horas(double horas, double tardanzasB) {
 		for (Trabajador trabajador : GlobalVars.trabajadores) {
-			System.out.println("-------- TARDANZAS:HORAS --------");
-			horas = GlobalVars.leer.decimal();
-			while (horas > 8) {
-				System.out.println("INTÉNTELO DE NUEVO : ");
-				tardanzasB = GlobalVars.leer.decimal();
-
-			}
+			do {
+				System.out.println("-------- TARDANZAS:HORAS --------");
+				horas = GlobalVars.leer.decimal();
+			} while (horas > 24);
 
 		}
 		if (horas >= 1 && horas <= 3) {

@@ -63,7 +63,7 @@ public class Persona {
 	}
 
 	public String getFullname() {
-		return this.ApellidoPatPersona + "" + this.ApellidoMatPersona + "," + this.NombrePersona;
+		return this.ApellidoPatPersona + " " + this.ApellidoMatPersona + "," + this.NombrePersona;
 	}
 
 }
