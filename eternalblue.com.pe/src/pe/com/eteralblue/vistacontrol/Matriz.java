@@ -1,4 +1,4 @@
-package aplicacion_matematica.modelo;
+package pe.com.eteralblue.vistacontrol;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -84,9 +84,9 @@ public class Matriz {
     private static void matriz1() throws IOException {
     	saltodelinea(2);
     	System.out.println("------------- MATRIZ A ------------");
-        System.out.print("Tamaño de FILAS: " );
+        System.out.print("TamaÃ±o de FILAS: " );
         fila=Integer.parseInt( entrada.readLine());
-        System.out.print("Tamaño de COLUMNAS: " );
+        System.out.print("TamaÃ±o de COLUMNAS: " );
         colum=Integer.parseInt( entrada.readLine());
         m1= new double [fila][colum];
         saltodelinea(1);
@@ -102,9 +102,9 @@ public class Matriz {
     private static void matriz2() throws IOException {
     	saltodelinea(2);
     	System.out.println("------------- MATRIZ B ------------");
-    	System.out.print("Tamaño de FILAS: " );
+    	System.out.print("TamaÃ±o de FILAS: " );
         fila2=Integer.parseInt( entrada.readLine());
-        System.out.print("Tamaño de COLUMNAS: " );
+        System.out.print("TamaÃ±o de COLUMNAS: " );
         colum2=Integer.parseInt( entrada.readLine());
         m2= new double [fila2][colum2];
         saltodelinea(1);
