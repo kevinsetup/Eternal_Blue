@@ -1,7 +1,5 @@
 package pe.com.eteralblue.vistacontrol;
 
-import javax.sound.midi.Receiver;
-
 import pe.com.eteralblue.modelo.Boleta;
 import pe.com.eteralblue.modelo.Trabajador;
 import utils.GlobalVars;
