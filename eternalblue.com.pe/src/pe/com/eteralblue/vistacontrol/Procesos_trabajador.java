@@ -252,17 +252,15 @@ public class Procesos_trabajador {
 		} else {
 			System.out.println("----- LISTA DE TRABAJADORES ----------");
 			System.out.println(
-					"N° \tDniTrabajador \tNombre \tApellidoPaterno \tApellidoMaterno \tCodigo \tProfesión \tSueldoBase \tFechaIngreso \tCantidadHijos \tIdArea \tIdAfp");
+					"N° \tDNI  \t\t\tAPELLIDOS Y NOMBRE  \t\tCODIGO \t\tPROFESI�N  \t\tSUELDO  \tFECHA INGRESO  \tCANTIDAD HIJOS  \tAREA  \t\tAFP ");
 			for (Trabajador trabajador : GlobalVars.trabajadores) {
 				num++;
-				System.out.println(num + "\t" + trabajador.getDniPersona() + "\t"
-						+ Operaciones.recortar_nombres(trabajador.getNombrePersona()) + "\t"
-						+ Operaciones.recortar_nombres(trabajador.getApellidoPatPersona()) + "\t"
-						+ Operaciones.recortar_nombres(trabajador.getApellidoMatPersona()) + "\t"
-						+ trabajador.getCodigoTrabajador() + "\t"
+				System.out.println(num + "\t" + trabajador.getDniPersona() + "\t\t"
+						+ Operaciones.recortar_nombres(trabajador.getFullname()) + "\t\t"
+						+ trabajador.getCodigoTrabajador() + "\t\t"
 						+ Operaciones.recortar_nombres(trabajador.getProfesionTrabajador()) + "\t"
-						+ trabajador.getSueldoBaseTrabajador() + "\t" + trabajador.getFechaInTrabajador() + "\t"
-						+ trabajador.getCantidadHijosTrabajador() + "\t"
+						+ trabajador.getSueldoBaseTrabajador() + "\t\t" + trabajador.getFechaInTrabajador() + "\t\t"
+						+ trabajador.getCantidadHijosTrabajador() + "\t\t\t"
 						+ Operaciones.retornar_nombre_area(trabajador.getIdArea()) + "\t"
 						+ Operaciones.retornar_nombre_afp(trabajador.getIdAfp()));
 

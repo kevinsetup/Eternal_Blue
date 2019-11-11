@@ -8,12 +8,11 @@ import utils.Operaciones;
 public class Procesos_menu_generar_planilla {
 
 	public static double registro_minutos(double minutos, double tardanzasB) {
-		for (Trabajador trabajador : GlobalVars.trabajadores) {
-			do {
-				System.out.println("-------- TARDANZAS:MINUTOS --------");
-				minutos = GlobalVars.leer.decimal();
-			} while (minutos > 59);
-		}
+
+		do {
+			System.out.println("-------- TARDANZAS:MINUTOS --------");
+			minutos = GlobalVars.leer.decimal();
+		} while (minutos > 59);
 
 		if (minutos >= 10 && minutos <= 25) {
 			tardanzasB = 15;
@@ -29,13 +28,12 @@ public class Procesos_menu_generar_planilla {
 	}
 
 	public static double registro_horas(double horas, double tardanzasB) {
-		for (Trabajador trabajador : GlobalVars.trabajadores) {
-			do {
-				System.out.println("-------- TARDANZAS:HORAS --------");
-				horas = GlobalVars.leer.decimal();
-			} while (horas > 24);
 
-		}
+		do {
+			System.out.println("-------- TARDANZAS:HORAS --------");
+			horas = GlobalVars.leer.decimal();
+		} while (horas > 24);
+
 		if (horas >= 1 && horas <= 3) {
 			tardanzasB = 75;
 
@@ -136,6 +134,7 @@ public class Procesos_menu_generar_planilla {
 			diezmoB = sueldoBaseB / 10;
 			System.out.println("DIEZMO =  10%");
 			System.out.println("TOTAL = " + diezmoB);
+			System.out.println("***************************************************************************");
 			GlobalVars.IdBoleta++;
 
 			Boleta boleta = new Boleta(GlobalVars.IdBoleta, anioB, mesB, sueldoBaseB, gratificaB, bonificaB,

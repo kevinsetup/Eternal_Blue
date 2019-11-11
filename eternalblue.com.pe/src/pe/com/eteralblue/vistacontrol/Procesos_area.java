@@ -1,5 +1,7 @@
 package pe.com.eteralblue.vistacontrol;
 
+import java.awt.Component;
+
 import pe.com.eteralblue.modelo.Area;
 import utils.GlobalVars;
 import utils.Operaciones;
@@ -79,18 +81,18 @@ public class Procesos_area {
 	}
 
 	public static void listar_area() {
+
 		int num = 0;
 		if (GlobalVars.areas.isEmpty()) {
 			Operaciones.error(2);
 		} else {
-
 			System.out.println("----- LISTA DE AREAS ----------");
 			System.out.println("N° \tNOMBRE");
 			for (Area area : GlobalVars.areas) {
 				num++;
 				System.out.println(num + "\t" + area.getNombreArea());
-
 			}
+
 		}
 	}
 

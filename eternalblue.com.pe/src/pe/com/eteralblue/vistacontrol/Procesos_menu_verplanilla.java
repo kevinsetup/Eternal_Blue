@@ -31,15 +31,16 @@ public class Procesos_menu_verplanilla {
 	public static void ver_planilla() {
 		int num = 0;
 		System.out.println(
-				"N° \tAÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tAFP \tDIEZMO \tNOMBRE \tTOTAL ");
+				"N° \tAÑO  \tMES   \t\tSUELDO BASE   \tGATIFICACIONES  \tBONIFICACIÓN  \tHORAS EXTRAS  \tASIGNACION FAMILIAR  \tTARDANZAS  \tFALTAS  \tAFP  \tDIEZMO  \tNOMBRE  \t\tTOTAL ");
 		for (Boleta boleta : GlobalVars.boletas) {
 			num++;
-			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t" + Operaciones.mes(boleta.getMesBoleta())
-					+ "\t\t" + boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t"
+			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t"
+					+ Operaciones.recortar_nombres(Operaciones.mes(boleta.getMesBoleta())) + "\t"
+					+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t\t"
 					+ boleta.getBonificacionBoleta() + "\t\t" + boleta.getHorasExtrasBoleta() + "\t\t"
-					+ boleta.getAsignacionFamiliarBoleta() + "\t\t" + boleta.getTardanzasBoleta() + "\t\t"
-					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t\t" + boleta.getDiezmoBoleta()
-					+ "\t\t" + buscar_nombre_id(boleta.getIdTrabajador()) + "\t"
+					+ boleta.getAsignacionFamiliarBoleta() + "\t\t\t" + boleta.getTardanzasBoleta() + "\t\t"
+					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t" + boleta.getDiezmoBoleta()
+					+ "\t\t" + (buscar_nombre_id(boleta.getIdTrabajador())) + "\t"
 					+ (boleta.getSueldoBasebBoleta() + boleta.getGratificacionBoleta() + boleta.getBonificacionBoleta()
 							+ boleta.getHorasExtrasBoleta() + boleta.getAsignacionFamiliarBoleta()
 							- boleta.getTardanzasBoleta() - boleta.getFaltasBoleta() - boleta.getAfpBoleta()
@@ -76,22 +77,25 @@ public class Procesos_menu_verplanilla {
 							doc.setPageSize(PageSize.A3.rotate());
 							PdfWriter.getInstance(doc, archivo);
 							doc.open();
+							int num = 0;
 							doc.add(new Paragraph(
-									"AÑO \tMES \tSUELDO BASE \tGATIFICACIONES \tBONIFICACIÓN \tHORAS EXTRAS \tASIGNACION FAMILIAR \tTARDANZAS \tFALTAS \tDIEZMO \tNOMBRE \tTOTAL"));
+									"N° \tAÑO  \tMES   \t\tSUELDO BASE   \tGATIFICACIONES  \tBONIFICACIÓN  \tHORAS EXTRAS  \tASIGNACION FAMILIAR  \tTARDANZAS  \tFALTAS  \tAFP  \tDIEZMO  \tNOMBRE  \t\tTOTAL "));
 
 							for (Boleta boleta : GlobalVars.boletas) {
-								doc.add(new Paragraph(boleta.getAnioBoleta() + "\t"
-										+ Operaciones.mes(boleta.getMesBoleta()) + "\t\t"
+								num++;
+								doc.add(new Paragraph(num + "\t" + boleta.getAnioBoleta() + "\t"
+										+ Operaciones.recortar_nombres(Operaciones.mes(boleta.getMesBoleta())) + "\t"
 										+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta()
-										+ "\t\t" + boleta.getBonificacionBoleta() + "\t\t"
+										+ "\t\t\t" + boleta.getBonificacionBoleta() + "\t\t"
 										+ boleta.getHorasExtrasBoleta() + "\t\t" + boleta.getAsignacionFamiliarBoleta()
-										+ "\t\t" + boleta.getTardanzasBoleta() + "\t\t" + boleta.getFaltasBoleta()
-										+ "\t\t" + boleta.getDiezmoBoleta() + "\t\t"
-										+ buscar_nombre_id(boleta.getIdTrabajador()) + "\t"
+										+ "\t\t\t" + boleta.getTardanzasBoleta() + "\t\t" + boleta.getFaltasBoleta()
+										+ "\t\t" + boleta.getAfpBoleta() + "\t" + boleta.getDiezmoBoleta() + "\t\t"
+										+ (buscar_nombre_id(boleta.getIdTrabajador())) + "\t"
 										+ (boleta.getSueldoBasebBoleta() + boleta.getGratificacionBoleta()
 												+ boleta.getBonificacionBoleta() + boleta.getHorasExtrasBoleta()
 												+ boleta.getAsignacionFamiliarBoleta() - boleta.getTardanzasBoleta()
-												- boleta.getFaltasBoleta() - boleta.getDiezmoBoleta())));
+												- boleta.getFaltasBoleta() - boleta.getAfpBoleta()
+												- boleta.getDiezmoBoleta())));
 							}
 							doc.close();
 

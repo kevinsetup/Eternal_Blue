@@ -139,9 +139,9 @@ public class Operaciones {
 
 	public static String recortar_nombres(String nombre) {
 		String nombrecortado = nombre;
-		if (nombre.length() > 10) {
-			nombrecortado = nombre.substring(0, 8) + "...";
-		} else if (nombre.length() < 8) {
+		if (nombre.length() > 15) {
+			nombrecortado = nombre.substring(0, 13) + "...";
+		} else if (nombre.length() < 13) {
 			nombrecortado = nombre + "\t";
 		} else {
 			nombrecortado = nombre + " ";
