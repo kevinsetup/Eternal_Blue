@@ -1,27 +1,22 @@
 package pe.com.eteralblue.vistacontrol;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
+import utils.GlobalVars;
+import utils.Operaciones;
 
 public class Matriz {
-	static BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+	
 	public static int opc, fila, colum, fila2, colum2;
 	public static double[][] m1;
 	public static double[][] m2;
 
-	public static void saltodelinea(int cantidad) {
-		for (int i = 0; i < cantidad; i++) {
-			System.out.println(" ");
-		}
-	}
-
 	public static void main(String[] args) throws IOException {
 
 		do {
-			saltodelinea(3);
+			Operaciones.salto_lineas(3);
 			System.out.println("*-*-*-*-*-*- MATRICES *-*-*-*-*-*- ");
-			saltodelinea(2);
+			Operaciones.salto_lineas(2);
 			System.out.println("1.- Introducir matriz A n ");
 			System.out.println("2.- Introducir matriz B n ");
 			System.out.println("3.- Calcular: A + B n ");
@@ -32,7 +27,7 @@ public class Matriz {
 			System.out.println("8.- Calcular: A ^ -1 n ");
 			System.out.println("9.- SALIR ");
 			System.out.print("Elige una opcion [1-9]:  ");
-			opc = Integer.parseInt(entrada.readLine());
+			opc = GlobalVars.leer.entero();
 			switch (opc) {
 			case 1:
 				matriz1();
@@ -68,16 +63,12 @@ public class Matriz {
 		} while (opc != 9);
 	}
 
-	private static void salir() {
-		System.out.println("Gracias por su visita ... ");
-	}
-
-	private static void sumar() throws IOException {
-		saltodelinea(2);
+	private static void sumar() {
+		Operaciones.salto_lineas(2);
 		System.out.println("------------------------------");
 		System.out.println("| SUMATORIA DE MATRIZ A + B: |");
 		System.out.println("------------------------------");
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		if (fila == fila2 && colum == colum2) {
 			for (int x = 0; x < fila; x++) {
 				for (int y = 0; y < colum; y++) {
@@ -91,61 +82,47 @@ public class Matriz {
 		}
 	}
 
-	private static void matriz1() throws IOException {
-		saltodelinea(2);
+	private static void matriz1(){
+		Operaciones.salto_lineas(2);
 		System.out.println("------------- MATRIZ A ------------");
-		System.out.print("Tamaño de FILAS: ");
-		fila = Integer.parseInt(entrada.readLine());
-		System.out.print("Tamaño de COLUMNAS: ");
-		colum = Integer.parseInt(entrada.readLine());
+		System.out.print("TamaÃ±o de FILAS: ");
+		fila = GlobalVars.leer.entero();
+		System.out.print("TamaÃ±o de COLUMNAS: ");
+		colum = GlobalVars.leer.entero();
 		m1 = new double[fila][colum];
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 
 		for (int i = 0; i < fila; i++) {
 			for (int j = 0; j < colum; j++) {
 				System.out.print("Valor de matriz en [" + (i + 1) + " , " + (j + 1) + " ]= ");
-				m1[i][j] = Double.parseDouble(entrada.readLine());
+				m1[i][j] = GlobalVars.leer.decimal();
 			}
 		}
 	}
 
-	private static void matriz2() throws IOException {
-		saltodelinea(2);
+	private static void matriz2() {
+		Operaciones.salto_lineas(2);
 		System.out.println("------------- MATRIZ B ------------");
-		System.out.print("Tamaño de FILAS: ");
-		fila2 = Integer.parseInt(entrada.readLine());
-		System.out.print("Tamaño de COLUMNAS: ");
-		colum2 = Integer.parseInt(entrada.readLine());
+		System.out.print("TamaÃ±o de FILAS: ");
+		fila2 = GlobalVars.leer.entero();
+		System.out.print("TamaÃ±o de COLUMNAS: ");
+		colum2 = GlobalVars.leer.entero();
 		m2 = new double[fila2][colum2];
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		for (int i = 0; i < fila2; i++) {
 			for (int j = 0; j < colum2; j++) {
 				System.out.print("valor de matriz en [" + i + 1 + " , " + (j + 1) + " ]= ");
-				m2[i][j] = Double.parseDouble(entrada.readLine());
+				m2[i][j] = GlobalVars.leer.decimal();
 			}
-		}
-	}
-
-	private static void sumar2() {
-		if (fila == fila2 && colum == colum2) {
-			for (int x = 0; x < fila; x++) {
-				for (int y = 0; y < colum; y++) {
-					System.out.print((m1[x][y]) + (m2[x][y]) + " , ");
-				}
-				System.out.print("n");
-			}
-
-		} else {
-			System.out.print("no se pude sumar las matrices ");
 		}
 	}
 
 	private static void restar() {
-		saltodelinea(2);
+		Operaciones.salto_lineas(2);
 		System.out.println("--------------------------");
 		System.out.println("| RESTA DE MATRIZ A - B: |");
 		System.out.println("--------------------------");
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		if (fila == fila2 && colum == colum2) {
 			for (int x = 0; x < fila; x++) {
 				for (int y = 0; y < colum; y++) {
@@ -158,25 +135,13 @@ public class Matriz {
 		}
 	}
 
-	private static void restar2() {
-		if (fila == fila2 && colum == colum2) {
-			for (int x = 0; x < fila; x++) {
-				for (int y = 0; y < colum; y++) {
-					System.out.print((m2[x][y]) - (m1[x][y]) + " , ");
-				}
-				// System.out.print("n");
-			}
-		} else {
-			System.out.print("no se pude sumar las matrices ");
-		}
-	}
 
-	private static void multi() throws IOException {
-		saltodelinea(2);
+	private static void multi() {
+		Operaciones.salto_lineas(2);
 		System.out.println("----------------------------------");
 		System.out.println("| MULTIPLICACION DE MATRIZ A * B |");
 		System.out.println("----------------------------------");
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		if (colum == fila2) {
 			double[][] r1 = new double[fila][colum2];
 			for (int x = 0; x < fila; x++) {
@@ -190,37 +155,19 @@ public class Matriz {
 			}
 		} else {
 			System.out.print("No se puede multiplicar matrices");
-			String a = entrada.readLine();
+			String a =GlobalVars.leer.cadena();
 		}
 	}
 
-	private static void multi2() throws IOException {
-		if (colum2 == fila) {
-			double[][] r1 = new double[fila2][colum];
-			for (int x = 0; x < fila2; x++) {
-				for (int y = 0; y < colum; y++) {
-					for (int m = 0; m < colum2; m++) {
-						r1[x][y] += m2[x][m] * m1[m][y];
-					}
-					System.out.print(r1[x][y] + " , ");
-				}
-				System.out.print("n");
-			}
-		} else {
-			System.out.print("No se puede multiplicar matrices");
-			String a = entrada.readLine();
-		}
-	}
-
-	private static void deta() throws IOException {
+	private static void deta(){
 		if (fila == colum) {
-			saltodelinea(2);
+			Operaciones.salto_lineas(2);
 			System.out.println("La DETERMINANTE es : " + determinante(m1));
 			System.out.println("--------------------------");
-			String a = entrada.readLine();
+			String a = GlobalVars.leer.cadena();
 		} else {
 			System.out.print("La Matriz no tiene determinante");
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		}
 	}
 
@@ -253,22 +200,22 @@ public class Matriz {
 		return suma;
 	}
 
-	@SuppressWarnings("unused")
-	private static void detb() throws IOException {
+
+	private static void detb()  {
 		if (fila2 == colum2) {
 			System.out.print("La determinante es : " + determinante(m2));
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		} else {
 			System.out.print("La Matriz NO tiene determinante");
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		}
 	}
 
-	private static void traa() throws IOException {
-		saltodelinea(2);
+	private static void traa()  {
+		Operaciones.salto_lineas(2);
 		System.out.println("LA MATRIZ ORIGINAL ");
 		System.out.println("-------------------");
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		// System.out.print("n");
 		for (int x = 0; x < fila; x++) {
 			for (int y = 0; y < colum; y++) {
@@ -277,10 +224,10 @@ public class Matriz {
 			// System.out.print("n");
 		}
 		// System.out.print("nn");
-		saltodelinea(2);
+		Operaciones.salto_lineas(2);
 		System.out.println("LA MATRIZ TRANSPUESTA ");
 		System.out.println("----------------------");
-		saltodelinea(1);
+		Operaciones.salto_lineas(1);
 		// System.out.print("n");
 		for (int x = 0; x < colum; x++) {
 			for (int y = 0; y < fila; y++) {
@@ -288,10 +235,10 @@ public class Matriz {
 			}
 			// System.out.print("n");
 		}
-		String a = entrada.readLine();
+		String a = GlobalVars.leer.cadena();
 	}
 
-	private static void trab() throws IOException {
+	private static void trab() {
 		System.out.print("La matriz original");
 		System.out.print("n");
 		for (int x = 0; x < fila2; x++) {
@@ -309,11 +256,11 @@ public class Matriz {
 			}
 			System.out.print("n");
 		}
-		String a = entrada.readLine();
+		String a =  GlobalVars.leer.cadena();
 	}
 
-	private static void inva() throws IOException {
-		saltodelinea(2);
+	private static void inva() {
+		Operaciones.salto_lineas(2);
 		System.out.println("------------- INVERSA DE A^ -1 -----------");
 		if (fila == colum && determinante(m1) != 0) {
 			double[][] res = matrizInversa(m1);
@@ -323,14 +270,14 @@ public class Matriz {
 				}
 				// System.out.print("n");
 			}
-			String a = entrada.readLine();
+			String a = GlobalVars.leer.cadena();
 		} else {
 			System.out.println("NO tiene inversa");
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		}
 	}
 
-	private static void invb() throws IOException {
+	private static void invb() {
 		if (fila2 == colum2 && determinante(m1) != 0) {
 			double[][] res = matrizInversa(m2);
 			for (int i = 0; i < res.length; i++) {
@@ -339,10 +286,10 @@ public class Matriz {
 				}
 				System.out.print("n");
 			}
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		} else {
 			System.out.println("La matriz no tiene inversa");
-			String a = entrada.readLine();
+			String a =  GlobalVars.leer.cadena();
 		}
 	}
 
