@@ -1,12 +1,15 @@
 package pe.com.eteralblue.vistacontrol;
 
+import java.io.IOException;
+
+import pe.com.eteralblue.modelo.Trabajador;
 import utils.GlobalVars;
 import utils.Operaciones;
 
 public class Index_menu_trabajador {
 
 	public static void menu_trabajador() {
-		
+
 		System.out.println("-*-*-*-*-* MENÚ TRABAJDOR -*-*-*-*-*-");
 		System.out.println("----- 1.- REGISTRAR TRABAJADOR----------");
 		System.out.println("----- 2.- EDITAR TRABAJADOR   ----------");
@@ -14,12 +17,10 @@ public class Index_menu_trabajador {
 		System.out.println("----- 4.- ELIMINAR TRABAJADOR ----------");
 		System.out.println("----- 5.- VOLVER              ----------");
 		System.out.println("ELIGA UNA OPCION [1-5]..");
-		
-		
 
 	}
 
-	public static void inicio_trabajador() {
+	public static void inicio_trabajador() throws IOException {
 		int opcion;
 		do {
 			Operaciones.salto_lineas(3);

@@ -59,7 +59,7 @@ public class Matriz {
 				inva();
 				break;
 			case 9:
-				salir();
+				Index_menu_principal.inicio();
 				break;
 			default:
 				System.out.println("Error: Fuera de Rango");

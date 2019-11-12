@@ -1,5 +1,7 @@
 package pe.com.eteralblue.vistacontrol;
 
+import java.io.IOException;
+
 import utils.GlobalVars;
 import utils.Operaciones;
 
@@ -14,7 +16,7 @@ public class Index_menu_afp {
 		System.out.println("ELIGA UNA OPCION [1-5]..");
 	}
 
-	public static void inicio_afp() {
+	public static void inicio_afp() throws IOException {
 		int opcion;
 		do {
 			menu_afp();

@@ -1,7 +1,11 @@
 package pe.com.eteralblue.vistacontrol;
 
+import java.io.IOException;
+
 import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
 
+import pe.com.eteralblue.modelo.Area;
+import pe.com.eteralblue.modelo.Trabajador;
 import utils.GlobalVars;
 import utils.Operaciones;
 
@@ -34,7 +38,7 @@ public class Index_menu_principal {
 
 	}
 
-	public static void inicio() {
+	public static void inicio() throws IOException {
 
 		int opcion;
 		do {
@@ -75,7 +79,7 @@ public class Index_menu_principal {
 				break;
 			case 6:
 				Operaciones.salto_lineas(3);
-				
+                Matriz.main(null);
 				Operaciones.salto_lineas(2);
 
 				break;
@@ -94,8 +98,9 @@ public class Index_menu_principal {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		inicio();
+
 	}
 
 }

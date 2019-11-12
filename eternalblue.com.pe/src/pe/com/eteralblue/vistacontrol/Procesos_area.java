@@ -7,6 +7,7 @@ import utils.GlobalVars;
 import utils.Operaciones;
 
 public class Procesos_area {
+
 	public static int buscar_area(String nombre) {
 		int posicion = -1;
 		boolean encontrado = false;
