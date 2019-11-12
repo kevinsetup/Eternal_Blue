@@ -1,5 +1,7 @@
 package pe.com.eteralblue.vistacontrol;
 
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
+
 import pe.com.eteralblue.modelo.Trabajador;
 import utils.GlobalVars;
 import utils.Operaciones;
@@ -56,90 +58,96 @@ public class Procesos_trabajador {
 	}
 
 	public static void registrar_trabajor() {
-		String DniPersonaT, NombreT, ApellidoPatT, ApellidoMatT, CodigoT, ProfesionT, FechaIngT, respuesta = " N", area,
-				afp;
-		Double SueldoBasT;
-		int cantidadHijosT, posicion, posicion2, IdArea = 0, IdAfp;
-		boolean encontrado = false;
-		do {
-			System.out.println("-----Registrar Trabajador----------");
-			do {
-				System.out.print("DNI : ");
-				DniPersonaT = GlobalVars.leer.cadena();
-			} while (dniRepetido(DniPersonaT) || !Operaciones.DNICorrecto(DniPersonaT)
-					|| !Operaciones.esNumero(DniPersonaT));
-			do {
-				System.out.print("NOMBRE: ");
-				NombreT = GlobalVars.leer.cadenaMayuscula();
-			} while (!Operaciones.validar_string(NombreT));
-			do {
-				System.out.print("APELLIDO PATERNO : ");
-				ApellidoPatT = GlobalVars.leer.cadenaMayuscula();
-			} while (!Operaciones.validar_string(ApellidoPatT));
-			do {
-				System.out.print("APELLIDO MATERNO : ");
-				ApellidoMatT = GlobalVars.leer.cadenaMayuscula();
-			} while (!Operaciones.validar_string(ApellidoMatT));
-			do {
-				System.out.print("CÓDIGO : ");
-				CodigoT = GlobalVars.leer.cadenaMayuscula();
-			} while (codigo_repetido(CodigoT) || !Operaciones.codigoCorrecto(CodigoT));
-			System.out.print("PROFESION : ");
-			ProfesionT = GlobalVars.leer.cadenaMayuscula();
-			System.out.print("SUELDO BASE : ");
-			SueldoBasT = GlobalVars.leer.decimal();
-			System.out.print("FECHA DE INGRESO: ");
-			FechaIngT = GlobalVars.leer.cadenaMayuscula();
-			System.out.print("CANTIDAD HIJOS : ");
-			cantidadHijosT = GlobalVars.leer.entero();
+		if (GlobalVars.areas.isEmpty() && GlobalVars.afps.isEmpty()) {
+			System.out.println("AREAS Y AFP TIENEN QUE SE REGISTRADOS");
+		} else {
 
+			String DniPersonaT, NombreT, ApellidoPatT, ApellidoMatT, CodigoT, ProfesionT, FechaIngT, respuesta = " N",
+					area, afp;
+			Double SueldoBasT;
+			int cantidadHijosT, posicion, posicion2, IdArea = 0, IdAfp;
+			boolean encontrado = false;
 			do {
-				Procesos_area.listar_area();
-				System.out.print("AREA : ");
-				area = GlobalVars.leer.cadenaMayuscula();
-				posicion = Procesos_area.buscar_area(area);
-				if (posicion == -1) {
-					System.out.println("AREA NO ENCONTRADA");
-					System.out.println("INTÉNTELO DE NUEVO : ");
-					encontrado = false;
+				System.out.println("-----Registrar Trabajador----------");
+				do {
+					System.out.print("DNI : ");
+					DniPersonaT = GlobalVars.leer.cadena();
+				} while (dniRepetido(DniPersonaT) || !Operaciones.DNICorrecto(DniPersonaT)
+						|| !Operaciones.esNumero(DniPersonaT));
+				do {
+					System.out.print("NOMBRE: ");
+					NombreT = GlobalVars.leer.cadenaMayuscula();
+				} while (!Operaciones.validar_string(NombreT));
+				do {
+					System.out.print("APELLIDO PATERNO : ");
+					ApellidoPatT = GlobalVars.leer.cadenaMayuscula();
+				} while (!Operaciones.validar_string(ApellidoPatT));
+				do {
+					System.out.print("APELLIDO MATERNO : ");
+					ApellidoMatT = GlobalVars.leer.cadenaMayuscula();
+				} while (!Operaciones.validar_string(ApellidoMatT));
+				do {
+					System.out.print("CÓDIGO : ");
+					CodigoT = GlobalVars.leer.cadenaMayuscula();
+				} while (codigo_repetido(CodigoT) || !Operaciones.codigoCorrecto(CodigoT));
+				System.out.print("PROFESION : ");
+				ProfesionT = GlobalVars.leer.cadenaMayuscula();
+				System.out.print("SUELDO BASE : ");
+				SueldoBasT = GlobalVars.leer.decimal();
+				System.out.print("FECHA DE INGRESO: ");
+				FechaIngT = GlobalVars.leer.cadenaMayuscula();
+				System.out.print("CANTIDAD HIJOS : ");
+				cantidadHijosT = GlobalVars.leer.entero();
 
-				} else {
-					encontrado = true;
-					IdArea = GlobalVars.areas.get(posicion).getIdArea();
-					System.out.println("AREA REGISTRADA CON ÉXITO");
+				do {
+					Procesos_area.listar_area();
+					System.out.print("AREA : ");
+					area = GlobalVars.leer.cadenaMayuscula();
+					posicion = Procesos_area.buscar_area(area);
+					if (posicion == -1) {
+						System.out.println("AREA NO ENCONTRADA");
+						System.out.println("INTÉNTELO DE NUEVO : ");
+						encontrado = false;
 
-				}
-			} while (!encontrado);
-			Operaciones.salto_lineas(2);
-			do {
+					} else {
+						encontrado = true;
+						IdArea = GlobalVars.areas.get(posicion).getIdArea();
+						System.out.println("AREA REGISTRADA CON ÉXITO");
 
-				Procesos_afp.listar_afp();
-				System.out.print("AFP : ");
-				afp = GlobalVars.leer.cadenaMayuscula();
-				posicion2 = Procesos_afp.encontrar_nombre(afp);
-				if (posicion2 == -1) {
-					System.out.println("AFP NO ENCONTRADO");
-					System.out.println("INTÉNTELO DE NUEVO : ");
-					encontrado = false;
+					}
+				} while (!encontrado);
+				Operaciones.salto_lineas(2);
+				do {
 
-				} else {
-					encontrado = true;
-					IdAfp = GlobalVars.afps.get(posicion2).getIdAfp();
-					GlobalVars.IdTrabajador++;
-					Trabajador trabajador = new Trabajador(GlobalVars.IdTrabajador, DniPersonaT, NombreT, ApellidoPatT,
-							ApellidoMatT, CodigoT, ProfesionT, SueldoBasT, FechaIngT, cantidadHijosT, IdArea, IdAfp);
-					GlobalVars.trabajadores.add(trabajador);
+					Procesos_afp.listar_afp();
+					System.out.print("AFP : ");
+					afp = GlobalVars.leer.cadenaMayuscula();
+					posicion2 = Procesos_afp.encontrar_nombre(afp);
+					if (posicion2 == -1) {
+						System.out.println("AFP NO ENCONTRADO");
+						System.out.println("INTÉNTELO DE NUEVO : ");
+						encontrado = false;
 
-					System.out.println("AFP REGISTRO CON ÉXITO");
+					} else {
+						encontrado = true;
+						IdAfp = GlobalVars.afps.get(posicion2).getIdAfp();
+						GlobalVars.IdTrabajador++;
+						Trabajador trabajador = new Trabajador(GlobalVars.IdTrabajador, DniPersonaT, NombreT,
+								ApellidoPatT, ApellidoMatT, CodigoT, ProfesionT, SueldoBasT, FechaIngT, cantidadHijosT,
+								IdArea, IdAfp);
+						GlobalVars.trabajadores.add(trabajador);
 
-				}
-			} while (!encontrado);
+						System.out.println("AFP REGISTRO CON ÉXITO");
 
-			do {
-				System.out.print("Desea registrar otro Trabajador? [S/N]: ");
-				respuesta = GlobalVars.leer.cadenaMayuscula();
-			} while (!respuesta.equals("S") && !respuesta.equals("N"));
-		} while (respuesta.equals("S"));
+					}
+				} while (!encontrado);
+
+				do {
+					System.out.print("Desea registrar otro Trabajador? [S/N]: ");
+					respuesta = GlobalVars.leer.cadenaMayuscula();
+				} while (!respuesta.equals("S") && !respuesta.equals("N"));
+			} while (respuesta.equals("S"));
+		}
 	}
 
 	public static void editar_trabajador() {

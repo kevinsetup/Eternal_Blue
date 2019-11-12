@@ -28,26 +28,29 @@ public class Procesos_menu_verplanilla {
 	}
 
 	public static void ver_planilla() {
-		int num = 0;
-		System.out.println(
-				"N° \tAÑO  \tMES   \t\tSUELDO BASE   \tGATIFICACIONES  \tBONIFICACIÓN  \tHORAS EXTRAS  \tASIGNACION FAMILIAR  \tTARDANZAS  \tFALTAS  \tAFP  \tDIEZMO  \tNOMBRE  \t\tTOTAL ");
-		for (Boleta boleta : GlobalVars.boletas) {
-			num++;
-			System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t"
-					+ Operaciones.recortar_nombres(Operaciones.mes(boleta.getMesBoleta())) + "\t"
-					+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t\t"
-					+ boleta.getBonificacionBoleta() + "\t\t" + boleta.getHorasExtrasBoleta() + "\t\t"
-					+ boleta.getAsignacionFamiliarBoleta() + "\t\t\t" + boleta.getTardanzasBoleta() + "\t\t"
-					+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t" + boleta.getDiezmoBoleta()
-					+ "\t\t" + (buscar_nombre_id(boleta.getIdTrabajador())) + "\t"
-					+ (boleta.getSueldoBasebBoleta() + boleta.getGratificacionBoleta() + boleta.getBonificacionBoleta()
-							+ boleta.getHorasExtrasBoleta() + boleta.getAsignacionFamiliarBoleta()
-							- boleta.getTardanzasBoleta() - boleta.getFaltasBoleta() - boleta.getAfpBoleta()
-							- boleta.getDiezmoBoleta()));
+		if (GlobalVars.trabajadores.isEmpty()) {
+			System.out.println("NO HAY TRABAJADORES REGISTRADOS");
+		} else {
+			int num = 0;
+			System.out.println(
+					"N° \tAÑO  \tMES   \t\tSUELDO BASE   \tGATIFICACIONES  \tBONIFICACIÓN  \tHORAS EXTRAS  \tASIGNACION FAMILIAR  \tTARDANZAS  \tFALTAS  \tAFP  \tDIEZMO  \tNOMBRE  \t\tTOTAL ");
+			for (Boleta boleta : GlobalVars.boletas) {
+				num++;
+				System.out.println(num + "\t" + boleta.getAnioBoleta() + "\t"
+						+ Operaciones.recortar_nombres(Operaciones.mes(boleta.getMesBoleta())) + "\t"
+						+ boleta.getSueldoBasebBoleta() + "\t\t" + boleta.getGratificacionBoleta() + "\t\t\t"
+						+ boleta.getBonificacionBoleta() + "\t\t" + boleta.getHorasExtrasBoleta() + "\t\t"
+						+ boleta.getAsignacionFamiliarBoleta() + "\t\t\t" + boleta.getTardanzasBoleta() + "\t\t"
+						+ boleta.getFaltasBoleta() + "\t\t" + boleta.getAfpBoleta() + "\t" + boleta.getDiezmoBoleta()
+						+ "\t\t" + (buscar_nombre_id(boleta.getIdTrabajador())) + "\t"
+						+ (boleta.getSueldoBasebBoleta() + boleta.getGratificacionBoleta()
+								+ boleta.getBonificacionBoleta() + boleta.getHorasExtrasBoleta()
+								+ boleta.getAsignacionFamiliarBoleta() - boleta.getTardanzasBoleta()
+								- boleta.getFaltasBoleta() - boleta.getAfpBoleta() - boleta.getDiezmoBoleta()));
 
+			}
+			generar_pdf();
 		}
-		generar_pdf();
-
 	}
 
 	public static void generar_pdf() {
