@@ -28,8 +28,8 @@ public class Procesos_menu_verplanilla {
 	}
 
 	public static void ver_planilla() {
-		if (GlobalVars.trabajadores.isEmpty()) {
-			System.out.println("NO HAY TRABAJADORES REGISTRADOS");
+		if (GlobalVars.boletas.isEmpty()) {
+			System.out.println("NO HAY BOLETAS REGISTRADOS");
 		} else {
 			int num = 0;
 			System.out.println(

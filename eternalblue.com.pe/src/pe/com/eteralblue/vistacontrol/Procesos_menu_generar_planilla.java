@@ -37,9 +37,9 @@ public class Procesos_menu_generar_planilla {
 		if (horas >= 1 && horas <= 3) {
 			tardanzasB = 75;
 
-		} else if (horas > 3 && horas <= 5) {
+		} else if (horas > 3 && horas <= 6) {
 			tardanzasB = 85;
-		} else if (horas > 5 && horas <= 8) {
+		} else if (horas > 7) {
 			tardanzasB = 95;
 		}
 		System.out.println("DECUENTO DE = " + tardanzasB + " SOLES ");
