@@ -44,7 +44,7 @@ public class Procesos_afp {
 	}
 
 	public static void editar_afp() {
-		System.out.println("----- EDITAR AFP----------");
+
 		String nombre, respuesta = "", respuesta2 = "N";
 		int posicion;
 		if (GlobalVars.afps.isEmpty()) {
@@ -52,6 +52,7 @@ public class Procesos_afp {
 		} else {
 
 			do {
+				System.out.println("----- EDITAR AFP----------");
 				listar_afp();
 				System.out.println("NOMBRE : ");
 				nombre = GlobalVars.leer.cadenaMayuscula();
@@ -87,7 +88,7 @@ public class Procesos_afp {
 						System.out.println("¿Desea seguir editando?[S/N]");
 						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 
-					} while (!respuesta2.equals("S") && !respuesta.equals("N"));
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
 					Operaciones.salto_lineas(3);
 				}
 			} while (respuesta2.equals("S"));

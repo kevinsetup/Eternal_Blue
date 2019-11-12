@@ -45,7 +45,7 @@ public class Procesos_area {
 
 	public static void editar_area() {
 		if (GlobalVars.areas.isEmpty()) {
-			Operaciones.error(2);
+			Operaciones.error(3);
 		} else {
 			int posicion;
 			String respuesta = "N", respuesta2 = " ";
@@ -60,20 +60,20 @@ public class Procesos_area {
 					do {
 						System.out.println("Nombre Actual: " + GlobalVars.areas.get(posicion).getNombreArea());
 						System.out.println("Â¿Desea Modificar Area? [S/N] : ");
-						respuesta = GlobalVars.leer.cadenaMayuscula();
+						respuesta2 = GlobalVars.leer.cadenaMayuscula();
 
-						if (respuesta.equals("S")) {
+						if (respuesta2.equals("S")) {
 							System.out.println("Nuevo Nombre: ");
 							GlobalVars.areas.get(posicion).setNombreArea(GlobalVars.leer.cadena());
 							Operaciones.salto_lineas(2);
 						}
-					} while (!respuesta.equals("S") && !respuesta.equals("N"));
+					} while (!respuesta2.equals("S") && !respuesta2.equals("N"));
 					System.out.println("TODOS LOS REGISTROS HAN SIDO EDITADOS CON ÉXITO");
 					do {
 						System.out.println("¿Desea seguir editando?[S/N]");
-						respuesta2 = GlobalVars.leer.cadenaMayuscula();
+						respuesta = GlobalVars.leer.cadenaMayuscula();
 
-					} while (!respuesta2.equals("S") && !respuesta.equals("N"));
+					} while (!respuesta.equals("S") && !respuesta.equals("N"));
 					Operaciones.salto_lineas(3);
 				}
 			} while (respuesta.equals("S"));
@@ -85,7 +85,7 @@ public class Procesos_area {
 
 		int num = 0;
 		if (GlobalVars.areas.isEmpty()) {
-			Operaciones.error(2);
+			Operaciones.error(3);
 		} else {
 			System.out.println("----- LISTA DE AREAS ----------");
 			System.out.println("NÂ° \tNOMBRE");
@@ -101,7 +101,7 @@ public class Procesos_area {
 		String respuesta = "N", respuesta2 = "";
 		int posicion;
 		if (GlobalVars.areas.isEmpty()) {
-			Operaciones.error(2);
+			Operaciones.error(3);
 		} else {
 			do {
 				System.out.println("***** ELIMINAR AREA *****");

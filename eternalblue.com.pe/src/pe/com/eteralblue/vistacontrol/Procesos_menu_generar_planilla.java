@@ -83,8 +83,11 @@ public class Procesos_menu_generar_planilla {
 
 				System.out.println("-------- GRATIFICACIONES --------");
 				gratificaB = GlobalVars.leer.decimal();
+				System.out.println(gratificaB + " soles");
+
 				System.out.println("-------- BONIFICACIONES  --------");
 				bonificaB = GlobalVars.leer.decimal();
+				System.out.println(bonificaB + " soles");
 
 				System.out.println("-------- HORAS EXTRAS-HORAS :   --------");
 				horasext = GlobalVars.leer.decimal();
@@ -93,6 +96,7 @@ public class Procesos_menu_generar_planilla {
 				} else if (horasext > 3) {
 					horasextrasB = 150;
 				}
+				System.out.println(horasextrasB + " soles ");
 
 				System.out.println("-------- ASIGNACION FAMI --------");
 				if (trabajador.getCantidadHijosTrabajador() > 1) {
