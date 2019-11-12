@@ -113,7 +113,7 @@ public class Procesos_menu_generar_planilla {
 			diasB = GlobalVars.leer.entero();
 			if (diasB >= 1 && diasB <= 3) {
 				faltasB = 150;
-			} else if (diasB > 4) {
+			} else if (diasB >= 4) {
 				faltasB = 350;
 			}
 			System.out.println("DESCUENTO = " + faltasB);
