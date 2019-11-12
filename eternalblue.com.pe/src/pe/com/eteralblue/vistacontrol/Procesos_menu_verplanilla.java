@@ -13,7 +13,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.xml.xmp.PdfA1Schema;
 
 public class Procesos_menu_verplanilla {
 
