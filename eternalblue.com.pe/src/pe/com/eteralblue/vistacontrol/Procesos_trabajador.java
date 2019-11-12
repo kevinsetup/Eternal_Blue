@@ -58,7 +58,7 @@ public class Procesos_trabajador {
 	}
 
 	public static void registrar_trabajor() {
-		if (GlobalVars.areas.isEmpty() && GlobalVars.afps.isEmpty()) {
+		if (GlobalVars.areas.isEmpty() || GlobalVars.afps.isEmpty()) {
 			System.out.println("AREAS Y AFP TIENEN QUE SE REGISTRADOS");
 		} else {
 
